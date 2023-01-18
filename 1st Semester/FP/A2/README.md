@@ -18,16 +18,8 @@ Before starting each sort, the program will ask for the value of parameter `step
 
 ## Sorting algorithms 
 ### Basic set
-- Bubble Sort
 - Cocktail Sort
-- Insert Sort
-- Permutation Sort
-- Selection Sort
 
 ### Advanced set
-- Shell Sort
-- Comb Sort
-- Gnome Sort
-- Stooge Sort
 - Strand Sort
 

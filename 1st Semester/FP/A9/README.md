@@ -23,21 +23,3 @@
 ## Problem Statements
 ### Connect Four
 The game is described [here](https://en.wikipedia.org/wiki/Connect_Four)
-
-### Gomoku
-The game is described [here](https://en.wikipedia.org/wiki/Gomoku)
-
-### Obstruction
-The game is described [here](http://www.papg.com/show?2XMX)
-
-### Battleship
-The game is described [here](https://en.wikipedia.org/wiki/Battleship_(game))
-
-### Planes
-The game is described [here](https://ro.wikipedia.org/wiki/Avioane_(joc))
-
-### Nine men's morris
-The game is described [here](https://en.wikipedia.org/wiki/Nine_men%27s_morris)
-
-### Other games!
-You are free to implement a different board game, as long as its complexity is similar to those above. Talk to your laboratory professor to validate your idea before starting work!
