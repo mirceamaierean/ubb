@@ -1,0 +1,2 @@
+1) 'NR%2==0, NF=4' file.txt
+2) grep -E -i -v "[0-9a-z]" file.txt
