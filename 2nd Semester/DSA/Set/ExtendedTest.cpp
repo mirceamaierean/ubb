@@ -7,6 +7,16 @@
 
 using namespace std;
 
+bool isEven(TElem elem)
+{
+	return elem % 2 == 0;
+}
+
+bool isOdd(TElem elem)
+{
+	return elem % 2 != 0;
+}
+
 void printM(Set &s)
 {
 	SetIterator it = s.iterator();
@@ -340,9 +350,49 @@ void testQuantity()
 	assert(s.size() == 0);
 }
 
+void testFilter()
+{
+	cout << "Test filter" << endl;
+	Set s;
+	// Can't filter an empty set
+	try
+	{
+		s.filter(isEven);
+		assert(false);
+	}
+	catch (exception &ex)
+	{
+		assert(true);
+	}
+
+	for (int i = 0; i < 100; i++)
+		s.add(i);
+
+	assert(s.size() == 100);
+
+	s.filter(isEven);
+
+	assert(s.size() == 50);
+
+	s.filter(isEven);
+	assert(s.size() == 50);
+
+	for (int i = 0; i < 100; i++)
+		s.add(i);
+
+	assert(s.size() == 100);
+
+	s.filter(isOdd);
+
+	assert(s.size() == 50);
+
+	s.filter(isEven);
+	assert(s.size() == 0);
+}
 // we don't know how the set is represented and in which order the elements are stored or printed, we can only test general thing
 void testAllExtended()
 {
+	testFilter();
 	testCreate();
 	testAdd();
 	testRemove();

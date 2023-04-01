@@ -55,7 +55,7 @@ public:
 
 	iterator begin()
 	{
-		return iterator{this->elems};
+		return iterator{elems};
 	}
 
 	iterator end()

@@ -4,6 +4,7 @@
 // DO NOT CHANGE THIS PART
 #define NULL_TELEM -111111
 typedef int TElem;
+typedef bool (*Condition)(TElem);
 class SetIterator;
 
 class Set
@@ -38,6 +39,8 @@ public:
 
     // check whether the set is empty or not;
     bool isEmpty() const;
+
+    void filter(Condition cond);
 
     // return an iterator for the set
     SetIterator iterator() const;

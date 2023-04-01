@@ -1,6 +1,7 @@
 #include "Set.h"
 #include "SetIterator.h"
 #include <string.h>
+#include <iostream>
 
 Set::Set()
 {
@@ -141,6 +142,18 @@ int Set::size() const
 bool Set::isEmpty() const
 {
 	return this->nrOfElements == 0;
+}
+// Best Case: Theta(1) (when the minimum is equal to the maximum), Worst Case: Theta(max - min) (when we have to resize the array), Average Case: Theta(max - min)
+void Set::filter(Condition cond)
+{
+	if (this->maxElem == NULL_TELEM)
+		throw std::exception();
+	for (int i = 0; i <= this->maxElem - this->minElem; ++i)
+		if (this->elements[i] && !cond(this->minElem + i))
+		{
+			this->elements[i] = false;
+			this->nrOfElements--;
+		}
 }
 
 Set::~Set()
