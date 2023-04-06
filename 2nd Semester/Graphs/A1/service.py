@@ -50,12 +50,12 @@ class Service:
         for i in range(nr_of_edges):
             start_node = randint(0, nr_of_vertices - 1)
             end_node = randint(0, nr_of_vertices - 1)
-            # while self.graph.check_if_edge_exists(start_node, end_node):
-            #     start_node = randint(0, nr_of_vertices - 1)
-            #     end_node = randint(0, nr_of_vertices - 1)
+            while self.graph.check_if_edge_exists(start_node, end_node):
+                start_node = randint(0, nr_of_vertices - 1)
+                end_node = randint(0, nr_of_vertices - 1)
             self.graph.add_vertex_in_graph(start_node)
             self.graph.add_vertex_in_graph(end_node)
             self.graph.add_edge_to_graph(start_node, end_node, i)
-            self.graph.set_cost_on_edge(i, randint(1, 100))
+            self.graph.set_cost_on_edge(i, randint(1, 100) - 50)
 
   

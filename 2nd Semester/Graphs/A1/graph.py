@@ -137,6 +137,13 @@ class Graph:
         """
         return self.__edges_cost[edge_id]
     
+    def modify_cost_of_edge(self, edge_id, cost):
+        """
+        :param edge_id: the id of the edge for which we want to set the cost
+        :param cost: the cost of the edge
+        """
+        self.__edges_cost[edge_id] = cost
+    
     def check_if_edge_exists(self, x, y):
         """
         :param x: the start node of the edge

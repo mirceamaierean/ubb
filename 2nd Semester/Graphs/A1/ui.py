@@ -15,6 +15,15 @@ class UI:
       for y in out_edges[x]:
         print(str(out_edges[x][y]) + ") " + str(x) + " " + str(y) + " " + str(self.__service.graph.get_cost_of_edge(out_edges[x][y])))
 
+  def print_vertices(self):
+    """
+    Prints the vertices of the graph
+    """
+    vertices = self.__service.graph.get_set_of_vertices()
+    print("The vertices of the graph are: ")
+    for v in vertices:
+      print(str(v))
+
   def check_if_edge_exists(self):
     """
     Displays console menu for checking if an edge exists in the graph
@@ -103,21 +112,18 @@ class UI:
     Interactive User Menu for modifying the cost of an edge
     """
     try:
-      x, y = input("Please enter the 2 vertices: ").split()
-      new_cost = int(input("Please enter the new cost: "))
+      id = int(input("Cost of which edge do you want to modify? "))
     except ValueError:
       print("Invalid input!")
       return
     try:
-      x, y = int(x), int(y)
+      new_cost = int(input("What is the new cost? "))
     except ValueError:
       print("Invalid input!")
       return
-    if self.__service.graph.check_if_edge_exists(x, y):
-      self.__service.graph.modify_cost_of_edge(x, y, new_cost)
-      print("The cost of the edge from " + str(x) + " to " + str(y) + " has been modified to " + str(new_cost))
-    else:
-      print("There is no edge from " + str(x) + " to " + str(y))
+    self.__service.graph.modify_cost_of_edge(id, new_cost)
+    print("The cost of the edge has been modified to " + str(new_cost))
+
 
   def add_edge(self):
     """
@@ -197,6 +203,17 @@ class UI:
     copy_of_graph = self.__service.graph.get_copy_of_graph()
     print("Done!")
   
+  def print_the_cost(self):
+    """
+    Function to print the cost of the graph
+    """
+    try:
+      id = int(input("Please enter the id of the edge: "))
+    except ValueError:
+      print("Invalid input!")
+      return
+    print("The cost of the graph is " + str(self.__service.graph.get_cost_of_edge(id)))
+
   def read_graph_from_file(self):
     """
     User Interface for reading a graph from a file. The user has to provide the filename.
@@ -223,7 +240,7 @@ class UI:
     except ValueError:
       print("Invalid input!")
       return
-    self.__service.graph.generate_random_graph(n, m)
+    self.__service.generate_random_graph(n, m)
     print("Done!")
 
   def print_menu(self):
@@ -247,7 +264,9 @@ class UI:
     print("14. Read graph from file")
     print("15. Write graph to file")
     print("16. Generate random graph")
-    print("17. Exit")
+    print("17. Print vertices of graph")
+    print("18. Print the cost of the edge")
+    print("19. Exit")
   
   def run(self):
     """
@@ -291,6 +310,10 @@ class UI:
       elif command == "16":
         self.generate_random_graph()
       elif command == "17":
+        self.print_vertices()
+      elif command == "18":
+        self.print_the_cost()
+      elif command == "19":
         filename = "graph" + str(self.__service.graph.get_number_of_vertices()) + "_modif.txt"
         self.__service.write_graph_to_file(filename)
         print("Goodbye!")
