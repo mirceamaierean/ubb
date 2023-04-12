@@ -4,35 +4,72 @@
 // Best Case: Theta(1), Worst Case: Theta(1), Average Case: Theta(1)
 SMMIterator::SMMIterator(const SortedMultiMap &d) : map(d)
 {
-	this->current = map.head;
+	this->current = nullptr;
+}
+
+SMMIterator &SMMIterator::operator=(const SMMIterator &other)
+{
+	this->current = other.current;
+	return *this;
 }
 
 // Best Case: Theta(1), Worst Case: Theta(1), Average Case: Theta(1)
 void SMMIterator::first()
 {
-	this->current = map.head;
+	this->current = map.head->next;
+}
+
+void SMMIterator::last()
+{
+	this->current = map.tail->prev;
 }
 
 // Best Case: Theta(1), Worst Case: Theta(1), Average Case: Theta(1)
 void SMMIterator::next()
 {
-	if (this->current->next == nullptr)
+	if (map.isEmpty())
+		throw exception();
+	if (this->current == nullptr)
+	{
+		this->first();
+		return;
+	}
+	if (this->current == map.tail)
 		throw exception();
 	this->current = this->current->next;
+}
+
+void SMMIterator::previous()
+{
+	if (map.isEmpty())
+		throw exception();
+	if (this->current == nullptr)
+	{
+		this->last();
+		return;
+	}
+	if (map.isEmpty() || this->current == map.head)
+		throw exception();
+	this->current = this->current->prev;
 }
 
 // Best Case: Theta(1), Worst Case: Theta(1), Average Case: Theta(1)
 bool SMMIterator::valid() const
 {
-	if (this->current != nullptr && this->current->next != nullptr)
-		return true;
-	return false;
+	return (map.size() && this->current != map.tail && this->current != map.head);
 }
 
 // Best Case: Theta(1), Worst Case: Theta(1), Average Case: Theta(1)
-TElem SMMIterator::getCurrent() const
+TElem SMMIterator::getCurrent()
 {
-	if (this->current->next == nullptr)
+	if (map.isEmpty())
 		throw exception();
-	return this->current->next->elem;
+	if (this->current == nullptr)
+	{
+		this->first();
+		return this->current->elem;
+	}
+	if (map.isEmpty() || this->current == map.tail)
+		throw exception();
+	return this->current->elem;
 }

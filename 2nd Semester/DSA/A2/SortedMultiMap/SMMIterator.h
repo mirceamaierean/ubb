@@ -13,8 +13,12 @@ private:
 	SMMIterator(const SortedMultiMap &map);
 
 public:
+	// Add copy assignment operator and copy constructor
+	SMMIterator &operator=(const SMMIterator &other);
 	void first();
+	void last();
 	void next();
+	void previous();
 	bool valid() const;
-	TElem getCurrent() const;
+	TElem getCurrent();
 };

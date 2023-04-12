@@ -30,6 +30,16 @@ void testAll()
     assert(v.size() == 0);
     SMMIterator it = smm.iterator();
     it.first();
+    try
+    {
+        it.previous();
+        assert(true);
+    }
+    catch (exception &ex)
+    {
+        assert(false);
+    }
+
     while (it.valid())
     {
         TElem e = it.getCurrent();

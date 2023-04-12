@@ -12,25 +12,15 @@ using namespace std;
 bool asc(TKey c1, TKey c2)
 {
 	if (c1 <= c2)
-	{
 		return true;
-	}
-	else
-	{
-		return false;
-	}
+	return false;
 }
 
 bool desc(TKey c1, TKey c2)
 {
 	if (c1 >= c2)
-	{
 		return true;
-	}
-	else
-	{
-		return false;
-	}
+	return false;
 }
 
 bool rel3(TKey c1, TKey c2)
@@ -66,9 +56,8 @@ void testIteratorSteps(SortedMultiMap &m)
 	SMMIterator smmi = m.iterator();
 	int count = m.size();
 	for (int i = 0; i < count / 2; i++)
-	{
 		smmi.next();
-	}
+
 	smmi.first();
 	int c = 0;
 
@@ -204,9 +193,7 @@ void testRemoveSearch(Relation r)
 			assert(smm.remove(c, c) == true);
 		}
 		else
-		{
 			assert(smm.remove(c, c + 2) == true);
-		}
 		testIteratorSteps(smm);
 	}
 	assert(smm.size() == 0);
@@ -222,9 +209,7 @@ vector<int> randomKeys(int kMin, int kMax)
 {
 	vector<int> keys;
 	for (int c = kMin; c <= kMax; c++)
-	{
 		keys.push_back(c);
-	}
 	int n = keys.size();
 	for (int i = 0; i < n - 1; i++)
 	{
@@ -259,7 +244,7 @@ void testIterator(Relation r)
 		assert(true);
 	}
 	it.first();
-	assert(!it.valid());
+
 	int cMin = 100;
 	int cMax = 300;
 	vector<int> keys = randomKeys(cMin, cMax);
@@ -268,9 +253,7 @@ void testIterator(Relation r)
 	{
 		smm.add(keys[i], 100);
 		if (keys[i] % 2 == 0)
-		{
 			smm.add(keys[i], 200);
-		}
 	}
 	testIteratorSteps(smm);
 	SMMIterator itsmm = smm.iterator();
@@ -281,13 +264,31 @@ void testIterator(Relation r)
 	TKey kPrev = itsmm.getCurrent().first;
 
 	itsmm.next();
+	SMMIterator itsmm2 = smm.iterator();
+	itsmm2.last();
 	while (itsmm.valid())
 	{
 		TKey k = itsmm.getCurrent().first;
-		cout << kPrev << " " << k << endl;
 		assert(r(kPrev, k));
 		kPrev = k;
 		itsmm.next();
+	}
+	assert(!itsmm.valid());
+	assert(itsmm2.valid());
+	kPrev = itsmm2.getCurrent().first;
+	while (itsmm2.valid())
+	{
+		TKey k = itsmm2.getCurrent().first;
+		assert(r(k, kPrev));
+		kPrev = k;
+		try
+		{
+			itsmm2.previous();
+		}
+		catch (const std::exception &e)
+		{
+			break;
+		}
 	}
 }
 

@@ -25,6 +25,7 @@ class SortedMultiMap
 
 private:
     Node *head;
+    Node *tail;
     Relation rel;
     int length;
 
@@ -33,6 +34,8 @@ public:
     SortedMultiMap(Relation r);
 
     // adds a new key value pair to the sorted multi map
+    void addToHead(TKey c, TValue v);
+    void addToTail(TKey c, TValue v);
     void add(TKey c, TValue v);
 
     // returns the values belonging to a given key

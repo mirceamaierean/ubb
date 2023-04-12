@@ -10,11 +10,12 @@ SortedMultiMap::SortedMultiMap(Relation r)
 {
 	this->rel = r;
 	this->head = new Node;
+	this->tail = new Node;
 	this->length = 0;
 }
 
 // Best Case: Theta(1), Worst Case: Theta(n), Average Case: Theta(n)
-void SortedMultiMap::add(TKey c, TValue v)
+void SortedMultiMap::addToHead(TKey c, TValue v)
 {
 	Node *newNode = new Node;
 	newNode->elem = TElem(c, v);
@@ -22,19 +23,23 @@ void SortedMultiMap::add(TKey c, TValue v)
 	{
 		this->head->next = newNode;
 		newNode->prev = this->head;
+		newNode->next = this->tail;
+		this->tail->prev = newNode;
 	}
 	else
 	{
-		Node *current = this->head->next;
+		Node *current = this->head->next, *previous = this->head;
 		while (current != nullptr && this->rel(current->elem.first, c))
+		{
+			previous = current;
 			current = current->next;
+		}
 		if (current == nullptr)
 		{
-			current = this->head;
-			while (current->next != nullptr)
-				current = current->next;
+			current = previous;
 			current->next = newNode;
 			newNode->prev = current;
+			this->tail->prev = newNode;
 		}
 		else
 		{
@@ -43,6 +48,42 @@ void SortedMultiMap::add(TKey c, TValue v)
 			current->prev->next = newNode;
 			current->prev = newNode;
 		}
+	}
+}
+
+// Best Case: Theta(1), Worst Case: Theta(n), Average Case: Theta(n)
+void SortedMultiMap::addToTail(TKey c, TValue v)
+{
+	Node *newNode = new Node;
+	newNode->elem = TElem(c, v);
+	if (this->tail->prev == nullptr)
+	{
+		this->tail->prev = newNode;
+		newNode->next = this->tail;
+		newNode->prev = this->head;
+		this->head->next = newNode;
+	}
+	else
+	{
+		Node *current = this->tail->prev;
+		while (current != this->head && this->rel(c, current->elem.first))
+			current = current->prev;
+		current->next->prev = newNode;
+		newNode->next = current->next;
+		current->next = newNode;
+		newNode->prev = current;
+	}
+}
+
+void SortedMultiMap::add(TKey c, TValue v)
+{
+	if (this->tail->elem.first <= c)
+	{
+		this->addToTail(c, v);
+	}
+	else
+	{
+		this->addToHead(c, v);
 	}
 	++this->length;
 }
@@ -65,14 +106,13 @@ vector<TValue> SortedMultiMap::search(TKey c) const
 bool SortedMultiMap::remove(TKey c, TValue v)
 {
 	Node *current = this->head->next;
-	while (current != nullptr && this->rel(current->elem.first, c))
+	while (current != this->tail && this->rel(current->elem.first, c))
 	{
 		if (current->elem.first == c && current->elem.second == v)
 		{
-			current->prev->next = current->next;
-			if (current->next != nullptr)
-				current->next->prev = current->prev;
-			delete current;
+			Node *previous = current->prev, *next = current->next;
+			previous->next = next;
+			next->prev = previous;
 			--this->length;
 			return true;
 		}
@@ -90,7 +130,7 @@ int SortedMultiMap::size() const
 // Best Case: Theta(1), Worst Case: Theta(1), Average Case: Theta(1)
 bool SortedMultiMap::isEmpty() const
 {
-	return this->head->next == nullptr;
+	return this->length == 0;
 }
 
 // Best Case: Theta(1), Worst Case: Theta(1), Average Case: Theta(1)
@@ -109,5 +149,6 @@ SortedMultiMap::~SortedMultiMap()
 		delete current;
 		current = next;
 	}
-	delete this->head;
+	if (this->head != nullptr)
+		delete this->head;
 }
