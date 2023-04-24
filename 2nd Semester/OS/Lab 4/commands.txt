@@ -30,3 +30,4 @@ NF - numarul de cuvinte dintr-o linie
 grep -E '\b[aeiouAEIOU][^aeiouAEIOU]*[aeiouAEIOU][^aeiouAEIOU]*\b' file.txt -> Cautam cuvinte consecutive cu 2 vocale
 
 grep -o -i mauris example.txt | wc -l -> Numaram cuvintele mauris din fisier
+grep -o -i -c mauris example.txt -> Numaram cuvintele mauris din fisier
