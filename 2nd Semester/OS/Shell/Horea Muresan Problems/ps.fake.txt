@@ -460,4 +460,3 @@ jenkins  32013     1  0 Mar03 ?        00:05:34 /usr/java/jdk1.7.0_07/bin/java -
 root     32674  1736  0 Mar04 ?        00:00:00 sshd: horea [priv]
 horea    32680 32674  0 Mar04 ?        00:00:00 sshd: horea@pts/3
 horea    32681 32680  0 Mar04 pts/3    00:00:00 -bash
-
