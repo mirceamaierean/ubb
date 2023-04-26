@@ -6,9 +6,9 @@ done
 
 # ls -l .
 
-# for file in `find . -type f`; do
-#   if ls -l $file | grep -E -q "^-.w..w..w-"; then
-#     echo $file
-#     chmod a-w $file
-#   fi
-# done
+for file in `find . -type f`; do
+  if ls -l $file | grep -E -q "^-.w..w..w-"; then
+    echo $file
+    chmod a-w $file
+  fi
+done

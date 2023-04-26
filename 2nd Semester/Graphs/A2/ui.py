@@ -272,6 +272,28 @@ class UI:
                   str(x) + " to " + str(y) + " is: ")
             print(path)
 
+    def print_strongly_connected_components(self):
+        """
+        Function to print the strongly connected components of the graph.
+        """
+        list_of_strongly_connected_components = self.__service.get_strongly_connected_components_of_the_graph()
+        print("The number of strongly connected components is: " +
+              str(len(list_of_strongly_connected_components)))
+        print("The strongly connected components are: ")
+        for component in list_of_strongly_connected_components:
+            print(component)
+
+    def print_biconnected_components(self):
+        """
+        Function to print the biconnected components of the graph.
+        """
+        list_of_biconnected_components = self.__service.get_biconnected_components_of_the_graph()
+        print("The number of biconnected components is: " +
+              str(len(list_of_biconnected_components)))
+        print("The biconnected components are: ")
+        for component in list_of_biconnected_components:
+            print(component)
+
     def print_menu(self):
         """
         Function to print the menu of the application. The user will choose an option from the menu.
@@ -296,7 +318,9 @@ class UI:
         print("17. Print vertices of graph")
         print("18. Print the cost of the edge")
         print("19. Find the shortest path between 2 vertices, using a backwards breadth-first search")
-        print("20. Exit")
+        print("20. Get the strongly connected components of the graph")
+        print("21. Get the biconnected components of the graph")
+        print("22. Exit")
 
     def run(self):
         """
@@ -348,6 +372,10 @@ class UI:
             elif command == "19":
                 self.find_shortest_path()
             elif command == "20":
+                self.print_strongly_connected_components()
+            elif command == "21":
+                self.print_biconnected_components()
+            elif command == "22":
                 filename = "graph" + \
                     str(self.__service.graph.get_number_of_vertices()) + "_modif.txt"
                 self.__service.write_graph_to_file(filename)

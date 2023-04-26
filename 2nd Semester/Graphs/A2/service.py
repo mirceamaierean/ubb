@@ -10,6 +10,12 @@ class Service:
         self.graph: the graph that we will use for our algorithms
         """
         self.graph = Graph()
+        self.stack = []
+        self.visited = []
+        self.component = []
+        self.biconnected_components = []
+        self.level = []
+        self.low = []
 
     def read_graph_from_file(self, filename):
         """
@@ -103,3 +109,60 @@ class Service:
         # We add the end node to the path
         path.append(end_node)
         return path
+
+    def DFS1(self, node):
+        self.visited[node] = True
+        for neighbour in self.graph.get_out_edges()[node]:
+            if self.visited[neighbour] == False:
+                self.DFS1(neighbour)
+        self.stack.append(node)
+
+    def DFS2(self, node):
+        self.visited[node] = True
+        self.component.append(node)
+        for neighbour in self.graph.get_in_edges()[node]:
+            if self.visited[neighbour] == False:
+                self.DFS2(neighbour)
+
+    def DFS_biconnected_components(self, node, dad):
+        self.level[node] = self.level[dad] + 1
+        self.low[node] = self.level[node]
+        self.stack.append(node)
+        for neighbour in self.graph.get_out_edges()[node]:
+            if neighbour == dad:
+                continue
+            if self.level[neighbour]:
+                self.low[node] = min(self.low[node], self.level[neighbour])
+            else:
+                self.DFS_biconnected_components(neighbour, node)
+                self.low[node] = min(self.low[node], self.low[neighbour])
+                if self.low[neighbour] >= self.level[node]:
+                    self.biconnected_components.append([])
+                    while self.stack[-1] != neighbour:
+                        self.biconnected_components[-1].append(
+                            self.stack.pop())
+                    self.biconnected_components[-1].append(self.stack.pop())
+                    self.biconnected_components[-1].append(node)
+
+    def get_strongly_connected_components_of_the_graph(self):
+        self.visited = [False] * self.graph.get_number_of_vertices()
+        for i in range(self.graph.get_number_of_vertices()):
+            if self.visited[i] == False:
+                self.DFS1(i)
+        self.visited = [False] * self.graph.get_number_of_vertices()
+        components = []
+        while self.stack:
+            node = self.stack.pop()
+            self.component = []
+            if self.visited[node] == False:
+                self.DFS2(node)
+                components.append(self.component)
+        return components
+
+    def get_biconnected_components_of_the_graph(self):
+        self.level = [0] * self.graph.get_number_of_vertices()
+        self.low = [0] * self.graph.get_number_of_vertices()
+        for i in range(self.graph.get_number_of_vertices()):
+            if self.level[i] == 0:
+                self.DFS_biconnected_components(i, i)
+        return self.biconnected_components
