@@ -9,13 +9,13 @@ fi
 seq=$1
 while [ $# -gt 1 ]; do
      if [ -f $2 ]; then
-         if grep -E -q "^$seq$" $2; then
+         if grep -E -q "$seq" $2; then
              echo "The file $2 contains $seq"
          else
              echo "The file $2 DOES NOT contain $seq"
          fi
      elif [ -d $2 ]; then
-         val=$(ls $2 | grep -E -c "$seq")
+         val=$(ls $2 | grep -E -c "^$seq$")
          if [ $val -gt 0 ]; then
              echo "The folder $2 contains a file with the name of the sequence $seq"
          else
