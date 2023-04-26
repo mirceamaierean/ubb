@@ -1,5 +1,6 @@
 from graph import Graph
 from random import randint
+from wolf_goat_cabbage import wolf_goat_cabbage
 
 
 class Service:
@@ -10,6 +11,7 @@ class Service:
         self.graph: the graph that we will use for our algorithms
         """
         self.graph = Graph()
+        self.in_edges = {}
         self.stack = []
         self.visited = []
         self.component = []
@@ -82,6 +84,7 @@ class Service:
         queue.append(end_node)
         visited[end_node] = True
         parent = [None] * self.graph.get_number_of_vertices()
+        self.in_edges = self.graph.get_in_edges()
         # As long as the queue has elements, or the node is not the one we have to find, we will continue
         while queue:
             # We pop the first element of the queue
@@ -91,7 +94,7 @@ class Service:
                 exists_a_path = True
                 break
             # We will add the neighbours of the node to the queue, if they have not been visited yet
-            for neighbour in self.graph.get_in_edges()[node]:
+            for neighbour in self.in_edges[node]:
                 if not visited[neighbour]:
                     queue.append(neighbour)
                     visited[neighbour] = True
@@ -166,3 +169,23 @@ class Service:
             if self.level[i] == 0:
                 self.DFS_biconnected_components(i, i)
         return self.biconnected_components
+
+    def solve_wolf_goat_cabbage_problem(self):
+        root_node = wolf_goat_cabbage()
+        to_visit = [root_node]
+        node = root_node
+        previous_states = []
+        dad = {root_node: None}
+        while to_visit:
+            node = to_visit.pop()
+            if not wolf_goat_cabbage.state_in_previous(previous_states, node.left_side, node.right_side, node.boat_side):
+                previous_states.append(node)
+            node.generate_children(previous_states, dad)
+            to_visit = node.children + to_visit
+            if sorted(node.right_side) == ["c", "g", "w"]:
+                solution = []
+                while node is not None:
+                    solution = [node] + solution
+                    node = dad[node]
+                return solution
+        return None

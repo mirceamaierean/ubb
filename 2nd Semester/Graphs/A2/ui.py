@@ -1,4 +1,6 @@
 from service import Service
+import wolf_goat_cabbage
+import puzzle
 
 
 class UI:
@@ -294,6 +296,43 @@ class UI:
         for component in list_of_biconnected_components:
             print(component)
 
+    def show_wolf_goat_cabbage(self):
+        """
+        Function to show the wolf-goat-cabbage problem.
+        """
+        solution = self.__service.solve_wolf_goat_cabbage_problem()
+        for state in solution:
+            print(state)
+
+    def solve_15_puzzle(self):
+        """
+        Function to solve the 15 puzzle.
+        """
+        initial_list = ["1", "0", "2", "4", "5", "7", "3",
+                        "8", "9", "6", "11", "12", "13", "10", "14", "15"]
+        # print(
+        #     "Provide numbers from 0 to 15, separated by space. 0 represents the empty tile.")
+
+        # initial_list = []
+        # for _ in range(16):
+        #     tile = input("Please enter the tile: ")
+        #     initial_list.append(tile)
+        solution = puzzle.solve(initial_list)
+        if solution is None:
+            print("There is no solution!")
+            return
+        print("The solution is: ")
+        for state in solution:
+            if state.action == 'r':
+                print("Move Right")
+            elif state.action == 'l':
+                print("Move Left")
+            elif state.action == 'u':
+                print("Move Up")
+            elif state.action == 'd':
+                print("Move Down")
+            print(state)
+
     def print_menu(self):
         """
         Function to print the menu of the application. The user will choose an option from the menu.
@@ -320,9 +359,12 @@ class UI:
         print("19. Find the shortest path between 2 vertices, using a backwards breadth-first search")
         print("20. Get the strongly connected components of the graph")
         print("21. Get the biconnected components of the graph")
-        print("22. Exit")
+        print("22. Solve the Wolf Goat Cabbage problem")
+        print("23. Solve the 15 puzzle problem")
+        print("24. Exit")
 
     def run(self):
+        self.__service.solve_wolf_goat_cabbage_problem()
         """
         Main function that performs all the jobs
         """
@@ -376,6 +418,10 @@ class UI:
             elif command == "21":
                 self.print_biconnected_components()
             elif command == "22":
+                self.show_wolf_goat_cabbage()
+            elif command == "23":
+                self.solve_15_puzzle()
+            elif command == "24":
                 filename = "graph" + \
                     str(self.__service.graph.get_number_of_vertices()) + "_modif.txt"
                 self.__service.write_graph_to_file(filename)
