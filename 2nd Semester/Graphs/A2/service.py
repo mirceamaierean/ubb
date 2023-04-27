@@ -114,6 +114,9 @@ class Service:
         return path
 
     def DFS1(self, node):
+        """
+        DFS on outbound edges, for finding the strongly connected components of the graph
+        """
         self.visited[node] = True
         for neighbour in self.graph.get_out_edges()[node]:
             if self.visited[neighbour] == False:
@@ -121,6 +124,9 @@ class Service:
         self.stack.append(node)
 
     def DFS2(self, node):
+        """
+        DFS on inbound edges, for finding the strongly connected components of the graph
+        """
         self.visited[node] = True
         self.component.append(node)
         for neighbour in self.graph.get_in_edges()[node]:
@@ -128,6 +134,9 @@ class Service:
                 self.DFS2(neighbour)
 
     def DFS_biconnected_components(self, node, dad):
+        """
+        DFS for finding the biconnected components of a graph
+        """
         self.level[node] = self.level[dad] + 1
         self.low[node] = self.level[node]
         self.stack.append(node)
@@ -148,6 +157,10 @@ class Service:
                     self.biconnected_components[-1].append(node)
 
     def get_strongly_connected_components_of_the_graph(self):
+        """
+        Steps: 1) DFS on outbound edges, perform a topological sorting
+        2) DFS on inbound edges, based on the nodes
+        """
         self.visited = [False] * self.graph.get_number_of_vertices()
         for i in range(self.graph.get_number_of_vertices()):
             if self.visited[i] == False:
@@ -163,6 +176,9 @@ class Service:
         return components
 
     def get_biconnected_components_of_the_graph(self):
+        """
+        FInd bicconected components of the graph
+        """
         self.level = [0] * self.graph.get_number_of_vertices()
         self.low = [0] * self.graph.get_number_of_vertices()
         for i in range(self.graph.get_number_of_vertices()):
@@ -171,6 +187,9 @@ class Service:
         return self.biconnected_components
 
     def solve_wolf_goat_cabbage_problem(self):
+        """
+        Set the nodes for Wolf Goat Cabbage problem
+        """
         root_node = wolf_goat_cabbage()
         to_visit = [root_node]
         node = root_node
