@@ -1,6 +1,7 @@
 #include "Matrix.h"
 #include <exception>
 
+// Best case: Theta(1), Worst case: Theta(1), Average case: Theta(1)
 Matrix::Matrix(int nrLines, int nrCols)
 {
 	this->nrL = nrLines;
@@ -14,18 +15,21 @@ Matrix::Matrix(int nrLines, int nrCols)
 	this->size = 1;
 }
 
+// Best case: Theta(1), Worst case: Theta(1), Average case: Theta(1)
 int Matrix::nrLines() const
 {
 	return this->nrL;
 	return 0;
 }
 
+// Best case: Theta(1), Worst case: Theta(1), Average case: Theta(1)
 int Matrix::nrColumns() const
 {
 	return this->nrC;
 	return 0;
 }
 
+// Best case: O(1), Worst case: O(capacity), Average case: O(capacity)
 TElem Matrix::element(int i, int j) const
 {
 	if (i < 0 || i >= this->nrL || j < 0 || j >= this->nrC)
@@ -41,12 +45,13 @@ TElem Matrix::element(int i, int j) const
 	return NULL_TELEM;
 }
 
+// Best case: O(1), Worst case: O(capacity), Average case: O(capacity)
 void Matrix::resize()
 {
 	this->capacity *= 2;
 	Triple *newTriplets = new Triple[this->capacity];
 	int *newNext = new int[this->capacity];
-	for (int i = 0; i < this->size; i++)
+	for (int i = 0; i < this->size; ++i)
 	{
 		newTriplets[i] = this->triplets[i];
 		newNext[i] = this->next[i];
@@ -61,24 +66,19 @@ void Matrix::resize()
 	this->firstFree = this->size;
 }
 
+// Best case: O(1), Worst case: O(capacity), Average case: O(size)
 TElem Matrix::modify(int i, int j, TElem e)
 {
-	// std::cout << "Modify: " << i << " " << j << " " << e << " size " << this->size << " capacity " << this->capacity << std::endl;
 	int oldValue = 0;
-	try
-	{
-		oldValue = this->element(i, j);
-	}
-	catch (const std::exception &ex)
-	{
-		throw ex;
-	}
+	if (i < 0 || i >= this->nrL || j < 0 || j >= this->nrC)
+		throw std::exception();
 	std::pair<int, int> p = {i, j};
 	int current = this->first, previous = -1, indexOfLargestSmallest = -1;
 	do
 	{
 		if (this->triplets[current].first == p)
 		{
+			oldValue = this->triplets[current].second;
 			if (e == NULL_TELEM)
 			{
 				if (previous == -1)
@@ -93,15 +93,15 @@ TElem Matrix::modify(int i, int j, TElem e)
 			this->triplets[current].second = e;
 			return oldValue;
 		}
-		if (this->triplets[current].first < p)
-			indexOfLargestSmallest = current;
+		indexOfLargestSmallest = current;
 		previous = current;
 		current = this->next[current];
-	} while (current != -1);
+	} while (current != -1 && this->triplets[current].first <= p);
 	if (this->capacity == this->size)
 		this->resize();
 	if (this->size == this->capacity / 2 - 1)
 		this->downsize();
+
 	// Insert element to ensure that those are lexicographically ordered
 	int nextFree = this->next[firstFree];
 	if (indexOfLargestSmallest == -1)
@@ -120,18 +120,52 @@ TElem Matrix::modify(int i, int j, TElem e)
 	return NULL_TELEM;
 }
 
+// Best case: O(1), Worst case: O(capacity), Average case: O(size)
+void Matrix::resizeToNewDimensions(int newNrL, int newNrC)
+{
+	if (newNrL <= 0 || newNrC <= 0)
+		throw std::exception();
+	if (newNrL >= this->nrL && newNrC >= this->nrC)
+		return;
+	std::pair<int, int> dimensions = {newNrL, newNrC};
+	this->nrL = newNrL;
+	this->nrC = newNrC;
+	Triple *newTriplets = new Triple[this->capacity];
+	int *newNext = new int[this->capacity];
+	int current = this->first, i = 0;
+	do
+	{
+		// std::cout << this->triplets[current].first.first << " " << this->triplets[current].first.second << " " << this->triplets[current].second << "\n";
+		if (this->triplets[current].first < dimensions)
+		{
+			newTriplets[i] = this->triplets[current];
+			newNext[i] = i + 1;
+			++i;
+		}
+		current = this->next[current];
+	} while (current != -1);
+	newNext[i] = -1;
+	delete[] this->triplets;
+	delete[] this->next;
+	this->triplets = newTriplets;
+	this->next = newNext;
+	this->firstFree = this->size;
+}
+
+// Best case: Theta(1), Worst case: Theta(capacity), Average case: Theta(capacity)
 void Matrix::downsize()
 {
 	this->capacity /= 2;
 	Triple *newTriplets = new Triple[this->capacity];
 	int *newNext = new int[this->capacity];
-	for (int i = 0; i < this->size; i++)
+	int current = this->first, i = 0;
+	do
 	{
-		newTriplets[i] = this->triplets[i];
-		newNext[i] = this->next[i];
-	}
-	for (int i = this->size; i < this->capacity; ++i)
+		newTriplets[i] = this->triplets[current];
 		newNext[i] = i + 1;
+		current = this->next[current];
+		++i;
+	} while (current != -1);
 	newNext[this->capacity - 1] = -1;
 	delete[] this->triplets;
 	delete[] this->next;

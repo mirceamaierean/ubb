@@ -1,4 +1,5 @@
 #include <assert.h>
+#include <unistd.h>
 #include "Matrix.h"
 #include "ExtendedTest.h"
 #include <iostream>
@@ -35,6 +36,221 @@ void testQuantity()
 {
 	cout << "Test quantity" << endl;
 	Matrix m(200, 300);
+	for (int i = m.nrLines() / 2; i < m.nrLines(); i++)
+	{
+		for (int j = 0; j <= m.nrColumns() / 2; j++)
+		{
+			int v1 = j;
+			int v2 = m.nrColumns() - v1 - 1;
+			if (i % 2 == 0 && v1 % 2 == 0)
+				m.modify(i, v1, i * v1);
+			else if (v1 % 3 == 0)
+				m.modify(i, v1, i + v1);
+			if (i % 2 == 0 && v2 % 2 == 0)
+				m.modify(i, v2, i * v2);
+			else if (v2 % 3 == 0)
+				m.modify(i, v2, i + v2);
+		}
+	}
+	for (int i = 0; i <= m.nrLines() / 2; i++)
+	{
+		for (int j = 0; j <= m.nrColumns() / 2; j++)
+		{
+			int v1 = j;
+			int v2 = m.nrColumns() - v1 - 1;
+			if (i % 2 == 0 && v1 % 2 == 0)
+				m.modify(i, v1, i * v1);
+			else if (v1 % 3 == 0)
+				m.modify(i, v1, i + v1);
+			if (i % 2 == 0 && v2 % 2 == 0)
+				m.modify(i, v2, i * v2);
+			else if (v2 % 3 == 0)
+				m.modify(i, v2, i + v2);
+		}
+	}
+	for (int i = 0; i < m.nrLines(); i++)
+		for (int j = 0; j < m.nrColumns(); j++)
+			if (i % 2 == 0 && j % 2 == 0)
+				assert(m.element(i, j) == i * j);
+			else if (j % 3 == 0)
+				assert(m.element(i, j) == i + j);
+			else
+				assert(m.element(i, j) == NULL_TELEM);
+}
+
+void testResize()
+{
+	cout << "Test resize" << endl;
+	Matrix m(200, 300);
+	for (int i = m.nrLines() / 2; i < m.nrLines(); i++)
+	{
+		for (int j = 0; j <= m.nrColumns() / 2; j++)
+		{
+			int v1 = j;
+			int v2 = m.nrColumns() - v1 - 1;
+			if (i % 2 == 0 && v1 % 2 == 0)
+				m.modify(i, v1, i * v1);
+			else if (v1 % 3 == 0)
+				m.modify(i, v1, i + v1);
+			if (i % 2 == 0 && v2 % 2 == 0)
+				m.modify(i, v2, i * v2);
+			else if (v2 % 3 == 0)
+				m.modify(i, v2, i + v2);
+		}
+	}
+	for (int i = 0; i <= m.nrLines() / 2; i++)
+	{
+		for (int j = 0; j <= m.nrColumns() / 2; j++)
+		{
+			int v1 = j;
+			int v2 = m.nrColumns() - v1 - 1;
+			if (i % 2 == 0 && v1 % 2 == 0)
+				m.modify(i, v1, i * v1);
+			else if (v1 % 3 == 0)
+				m.modify(i, v1, i + v1);
+			if (i % 2 == 0 && v2 % 2 == 0)
+				m.modify(i, v2, i * v2);
+			else if (v2 % 3 == 0)
+				m.modify(i, v2, i + v2);
+		}
+	}
+	for (int i = 0; i < m.nrLines(); i++)
+		for (int j = 0; j < m.nrColumns(); j++)
+			if (i % 2 == 0 && j % 2 == 0)
+				assert(m.element(i, j) == i * j);
+			else if (j % 3 == 0)
+				assert(m.element(i, j) == i + j);
+			else
+				assert(m.element(i, j) == NULL_TELEM);
+	try
+	{
+		m.resizeToNewDimensions(0, 100);
+		assert(false);
+	}
+	catch (const std::exception &e)
+	{
+		assert(true);
+	}
+
+	try
+	{
+		m.resizeToNewDimensions(100, 0);
+		assert(false);
+	}
+	catch (const std::exception &e)
+	{
+		assert(true);
+	}
+
+	try
+	{
+		m.resizeToNewDimensions(-7, 100);
+		assert(false);
+	}
+	catch (const std::exception &e)
+	{
+		assert(true);
+	}
+	try
+	{
+		m.resizeToNewDimensions(100, -7);
+		assert(false);
+	}
+	catch (const std::exception &e)
+	{
+		assert(true);
+	}
+	try
+	{
+		m.resizeToNewDimensions(100, 100);
+		assert(true);
+	}
+	catch (const std::exception &e)
+	{
+		assert(false);
+	}
+	for (int i = m.nrLines() / 2; i < m.nrLines(); i++)
+	{
+		for (int j = 0; j <= m.nrColumns() / 2; j++)
+		{
+			int v1 = j;
+			int v2 = m.nrColumns() - v1 - 1;
+			if (i % 2 == 0 && v1 % 2 == 0)
+				m.modify(i, v1, i * v1);
+			else if (v1 % 3 == 0)
+				m.modify(i, v1, i + v1);
+			if (i % 2 == 0 && v2 % 2 == 0)
+				m.modify(i, v2, i * v2);
+			else if (v2 % 3 == 0)
+				m.modify(i, v2, i + v2);
+		}
+	}
+	for (int i = 0; i <= m.nrLines() / 2; i++)
+	{
+		for (int j = 0; j <= m.nrColumns() / 2; j++)
+		{
+			int v1 = j;
+			int v2 = m.nrColumns() - v1 - 1;
+			if (i % 2 == 0 && v1 % 2 == 0)
+				m.modify(i, v1, i * v1);
+			else if (v1 % 3 == 0)
+				m.modify(i, v1, i + v1);
+			if (i % 2 == 0 && v2 % 2 == 0)
+				m.modify(i, v2, i * v2);
+			else if (v2 % 3 == 0)
+				m.modify(i, v2, i + v2);
+		}
+	}
+	for (int i = 0; i < m.nrLines(); i++)
+		for (int j = 0; j < m.nrColumns(); j++)
+			if (i % 2 == 0 && j % 2 == 0)
+				assert(m.element(i, j) == i * j);
+			else if (j % 3 == 0)
+				assert(m.element(i, j) == i + j);
+			else
+				assert(m.element(i, j) == NULL_TELEM);
+	m.resizeToNewDimensions(200, 200);
+	for (int i = m.nrLines() / 2; i < m.nrLines(); i++)
+	{
+		for (int j = 0; j <= m.nrColumns() / 2; j++)
+		{
+			int v1 = j;
+			int v2 = m.nrColumns() - v1 - 1;
+			if (i % 2 == 0 && v1 % 2 == 0)
+				m.modify(i, v1, i * v1);
+			else if (v1 % 3 == 0)
+				m.modify(i, v1, i + v1);
+			if (i % 2 == 0 && v2 % 2 == 0)
+				m.modify(i, v2, i * v2);
+			else if (v2 % 3 == 0)
+				m.modify(i, v2, i + v2);
+		}
+	}
+	for (int i = 0; i <= m.nrLines() / 2; i++)
+	{
+		for (int j = 0; j <= m.nrColumns() / 2; j++)
+		{
+			int v1 = j;
+			int v2 = m.nrColumns() - v1 - 1;
+			if (i % 2 == 0 && v1 % 2 == 0)
+				m.modify(i, v1, i * v1);
+			else if (v1 % 3 == 0)
+				m.modify(i, v1, i + v1);
+			if (i % 2 == 0 && v2 % 2 == 0)
+				m.modify(i, v2, i * v2);
+			else if (v2 % 3 == 0)
+				m.modify(i, v2, i + v2);
+		}
+	}
+	for (int i = 0; i < m.nrLines(); i++)
+		for (int j = 0; j < m.nrColumns(); j++)
+			if (i % 2 == 0 && j % 2 == 0)
+				assert(m.element(i, j) == i * j);
+			else if (j % 3 == 0)
+				assert(m.element(i, j) == i + j);
+			else
+				assert(m.element(i, j) == NULL_TELEM);
+	m.resizeToNewDimensions(300, 100);
 	for (int i = m.nrLines() / 2; i < m.nrLines(); i++)
 	{
 		for (int j = 0; j <= m.nrColumns() / 2; j++)
@@ -189,4 +405,5 @@ void testAllExtended()
 	testQuantity();
 	testMix();
 	testExceptions();
+	testResize();
 }
