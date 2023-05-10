@@ -1,0 +1,10 @@
+Type: Temperature Sensor
+Diamater: 10.000000
+Length: 20.000000
+Producer: Prod1
+Recordings: 20.000000 30.000000 40.000000 
+
+Type: Humidity Sensor
+Producer: Prod2
+Recordings: 50.000000 60.000000 70.000000 
+

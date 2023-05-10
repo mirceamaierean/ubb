@@ -7,7 +7,7 @@ protected:
   std::vector<Movie> movies;
 
 public:
-  WatchList();
+  WatchList() {};
   virtual ~WatchList() {}
   void addMovie(const Movie &);
   void removeMovieFromPlaylist(int);

@@ -1,10 +1,6 @@
 #include "WatchList.h"
 #include "Exceptions.h"
 
-WatchList::WatchList()
-{
-}
-
 void WatchList::addMovie(const Movie &movie)
 {
   this->movies.push_back(movie);

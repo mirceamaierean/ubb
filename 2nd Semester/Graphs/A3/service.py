@@ -13,6 +13,8 @@ class Service:
         self.graph = Graph()
         self.topological_sorting = []
         self.visited = []
+        self.dp = [[-1 for _ in range(2)] for _ in range(1 << 20)]
+        self.people = []
 
     def read_graph_from_file(self, filename):
         """
@@ -24,8 +26,7 @@ class Service:
         v, e = file.readline().split()
         v, e = int(v), int(e)
         self.graph = Graph(v)
-        for i in range(e):
-            edge_id = i
+        for _ in range(e):
             cost = 0
             start_node, end_node, cost = file.readline().split()
             start_node, end_node, cost = int(
@@ -166,3 +167,68 @@ class Service:
             for neighbour in edges[node]:
                 dp[node] += dp[neighbour]
         return dp[start_node]
+
+    def count_number_of_set_bits(self, mask):
+        """
+        This function counts the number of set bits in a mask
+        :param mask: the mask
+        :return: the number of set bits in the mask
+        """
+        cnt = 0
+        while mask:
+            cnt += mask & 1
+            mask >>= 1
+        return cnt
+
+    def find_min_time_for_transfer(self, leftmask, turn, n):
+        """
+        This function finds the minimum time for transfer for a given mask and turn
+        :param mask: the mask
+        :param turn: the turn
+        :return: the minimum time for transfer
+        """
+        if leftmask == 0:
+            return 0
+
+        res = self.dp[leftmask][turn]
+
+        if ~res:
+            return res
+
+        rightmask = ((1 << n) - 1) ^ leftmask
+
+        if turn:
+            minRow = float("inf")
+            person = 0
+
+            for i in range(n):
+                if rightmask & (1 << i):
+                    if minRow > self.people[i]:
+                        minRow = self.people[i]
+                        person = i
+
+            res = self.people[person] + self.find_min_time_for_transfer(
+                leftmask | (1 << person), turn ^ 1, n)
+
+        else:
+            if self.count_number_of_set_bits(leftmask) == 1:
+                for i in range(n):
+                    if leftmask & (1 << i):
+                        res = self.people[i]
+                        break
+            else:
+                res = float('inf')
+                for i in range(n):
+                    if leftmask & (1 << i):
+                        for j in range(i + 1, n):
+                            if leftmask & (1 << j):
+                                res = min(res, max(self.people[i], self.people[j]) + self.find_min_time_for_transfer(
+                                    leftmask ^ (1 << i) ^ (1 << j), turn ^ 1, n))
+
+        return res
+
+    def find_minimum_time_for_transfer(self, people, n):
+        self.people = people
+        self.dp = [[-1 for i in range(2)] for j in range(1 << n)]
+        mask = (1 << n) - 1
+        return self.find_min_time_for_transfer(mask, 0, n)

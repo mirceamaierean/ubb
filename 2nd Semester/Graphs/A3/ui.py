@@ -295,6 +295,19 @@ class UI:
         print("The number of walks between " + str(n) +
               " and " + str(m) + " is " + str(number))
 
+    def solve_bridge_and_torch_problem(self):
+        try:
+            n = input("Please enter the number of people: ")
+            n = int(n)
+        except ValueError:
+            print("Invalid input!")
+            return
+        people = []
+        for i in range(n):
+            people.append(int(input("Time for person " + str(i + 1) + ": ")))
+        cost = self.__service.find_minimum_time_for_transfer(people, n)
+        print("The minimum time for transfer is " + str(cost))
+
     def print_menu(self):
         """
         Function to print the menu of the application. The user will choose an option from the menu.
@@ -321,7 +334,8 @@ class UI:
         print("19. Find the lowest length path between 2 vertices")
         print("20. Find the number of lowest length paths between 2 vertices")
         print("21. Find the number of walks between 2 vertices")
-        print("22. Exit")
+        print("22. Solve the bridge and torch problem")
+        print("23. Exit")
 
     def run(self):
         """
@@ -377,6 +391,8 @@ class UI:
             elif command == "21":
                 self.find_number_of_walks_between_two_vertices()
             elif command == "22":
+                self.solve_bridge_and_torch_problem()
+            elif command == "23":
                 filename = "graph" + \
                     str(self.__service.graph.get_number_of_vertices()) + "_modif.txt"
                 self.__service.write_graph_to_file(filename)
