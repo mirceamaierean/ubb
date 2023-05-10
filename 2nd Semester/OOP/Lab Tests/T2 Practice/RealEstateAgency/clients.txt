@@ -1,0 +1,12 @@
+Type: Person
+Name: Ion
+Total Income: 700.000000
+
+Type: Person
+Name: Ana
+Total Income: 600.000000
+
+Type: Company
+Name: BRD
+Total Income: 30.000000
+
