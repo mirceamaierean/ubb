@@ -1,0 +1,18 @@
+ID: 14
+Weight: 2000.000000
+Electricity Usage Class: A
+Has Freezer: 1
+Consumed Electricity: 110.000000
+
+ID: 17
+Weight: 300.000000
+Washing Cycle Length: 2.500000
+Consumed Electricity for One Hour: 700.000000
+Consumed Electricity: 35000.000000
+
+ID: 56
+Weight: 100.000000
+Washing Cycle Length: 4.600000
+Consumed Electricity for One Hour: 50.000000
+Consumed Electricity: 4600.000000
+
