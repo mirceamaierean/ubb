@@ -1,3 +1,13 @@
+/*
+FIFO STEPS
+1) Creeaza FIFO: mkfifo(FIFO_FILE, 0600)
+2) Deschide FIFO pentru scriere: open(FIFO_FILE, O_WRONLY), sau pentru citire: open(FIFO_FILE, O_RDONLY)
+3) Pentru a scrie in FIFO: write(f, adresa, nr_octeti)
+4) Pentru a citi din FIFO: read(f, adresa, nr_octeti)
+5) Pentru a inchide FIFO: close(f)
+6) Pentru a sterge FIFO: unlink(FIFO_FILE)
+*/
+
 #include <stdio.h>
 #include <fcntl.h>
 #include <sys/stat.h>
@@ -11,23 +21,30 @@ int main()
   int a[] = {1, 2, 3, 4}, f;
 
   // create FIFO if it doesn't exist
-  mkfifo(FIFO_FILE, 0666);
+  if (mkfifo(FIFO_FILE, 0600) < 0)
+  {
+    printf("Error creating FIFO\n");
+    return 1;
+  }
 
   // open FIFO for reading
   f = open(FIFO_FILE, O_RDONLY);
 
-  a[2] += a[3];
+  if (f < 0)
+  {
+    printf("Error opening FIFO\n");
+    return 1;
+  }
 
   // read partial sum from FIFO
-  read(f, &a[0], sizeof(a[0]));
-
-  a[0] += a[2];
+  read(f, a, 4 * sizeof(int));
 
   // close FIFO
   close(f);
-
+  unlink(FIFO_FILE);
   // print final sum
-  printf("Final sum: %d\n", a[0]);
+  for (int i = 0; i < 4; ++i)
+    printf("%d ", a[i]);
 
   return 0;
 }

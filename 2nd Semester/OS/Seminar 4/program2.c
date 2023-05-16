@@ -8,14 +8,12 @@
 
 int main()
 {
-  int a[] = {1, 2, 3, 4}, f;
+  int a[] = {5, 6, 7, 8}, f;
 
   // open FIFO for writing
   f = open(FIFO_FILE, O_WRONLY);
-
-  a[0] += a[1];
   // write partial sum to FIFO
-  write(f, &a[0], sizeof(a[0]));
+  write(f, a, 4 * sizeof(int));
 
   // close FIFO
   close(f);
