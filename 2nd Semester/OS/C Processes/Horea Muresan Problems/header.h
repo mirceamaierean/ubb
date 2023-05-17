@@ -3,6 +3,11 @@
 
 char *myfifo1 = "./myfifo1";
 char *myfifo2 = "./myfifo2";
-char *myfifo3 = "./myfifo3";
+
+void unlink_fifo()
+{
+  unlink(myfifo1);
+  unlink(myfifo2);
+}
 
 #endif

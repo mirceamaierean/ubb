@@ -1,56 +1,58 @@
 #include <stdio.h>
+#include <string.h>
+#include <unistd.h>
 #include <stdlib.h>
+#include <sys/time.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-#include <sys/stat.h>
-#include <unistd.h>
+#include <math.h>
 #include <fcntl.h>
-
 #include "header.h"
 
 int main(int argc, char *argv[])
 {
   int fd_read = open(myfifo1, O_RDONLY);
-  if (-1 == fd_read)
+  if (fd_read < 0)
   {
-    perror("Error opening fifo 1 in B");
+    perror("Error opening fifo 2");
     exit(1);
   }
+
   int fd_write = open(myfifo2, O_WRONLY);
-  if (-1 == fd_write)
+  if (fd_write < 0)
   {
-    perror("Error opening fifo 2 in B");
+    perror("Error opening fifo 1");
     close(fd_read);
     exit(1);
   }
-  srandom(getpid());
-  int min = 0, max = 1001;
-  int not_guessed = 1;
-  while (not_guessed)
+
+  srand(getpid());
+
+  int min = 0, max = 1000, stop_sgn = 1, guess = random() % 1000;
+
+  while (stop_sgn)
   {
-    int guess = random() % (max - min) + min;
-    if (0 > write(fd_write, &guess, sizeof(int)))
+    if (write(fd_write, &guess, sizeof(int)) < 0)
     {
-      perror("Error on write to A");
-      break;
+      perror("Error writing to fifo 1");
+      close(fd_read);
+      close(fd_write);
+      exit(1);
     }
-    if (0 > read(fd_read, &not_guessed, sizeof(int)))
+    if (read(fd_read, &stop_sgn, sizeof(int)) < 0)
     {
-      perror("Error on read from B");
-      break;
+      perror("Error reading from fifo 2");
+      close(fd_read);
+      close(fd_write);
+      exit(1);
     }
-    if (-1 == not_guessed)
-    {
+    if (stop_sgn == 1)
       min = guess + 1;
-    }
-    else if (1 == not_guessed)
-    {
-      max = guess;
-    }
+    else if (stop_sgn == -1)
+      max = guess - 1;
     sleep(1);
+    guess = (min + max) / 2;
   }
 
-  close(fd_write);
-  close(fd_read);
   return 0;
 }

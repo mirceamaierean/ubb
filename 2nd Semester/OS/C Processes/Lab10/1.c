@@ -1,150 +1,144 @@
 // Write a C program that creates a child process. The child process will read two square matrixes of integers from a file. The child process will calculate the product of the two matrixes and send the result matrix to the parent process which will then display it.
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/wait.h>
 #include <string.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <sys/wait.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 
 int main(int argc, char *argv[])
 {
-  if (argc < 2)
-  {
-    printf("Provide at least one argument\n");
-    exit(1);
-  }
   int c2p[2];
-  if (0 > pipe(c2p))
+  if (pipe(c2p) < 0)
   {
-    perror("Error on pipe");
+    perror("pipe");
     exit(1);
   }
   int f = fork();
-
-  if (0 > f)
+  if (f < 0)
   {
-    perror("Error on fork");
+    perror("fork error");
+    close(c2p[0]);
+    close(c2p[1]);
     exit(1);
   }
-  else if (0 == f)
+  else if (f == 0)
   {
+    // Child code
     close(c2p[0]);
-    FILE *fd = fopen(argv[1], "r");
-    if (NULL == fd)
-    {
-      perror("Error opening file");
-      exit(1);
-    }
-    int n;
-    if (fscanf(fd, "%d", &n) < 1)
-    {
-      perror("Error reading matrix size");
-      fclose(fd);
-      exit(1);
-    }
-    int **a, **b, **result;
-    a = malloc(sizeof(int *) * n);
-    b = malloc(sizeof(int *) * n);
-    result = malloc(sizeof(int *) * n);
+    FILE *f = fopen(argv[1], "r");
+    int n, **m1, **m2, **m3;
+    fscanf(f, "%d", &n);
 
-    for (int i = 0; i < n; i++)
+    m1 = (int **)malloc(n * sizeof(int *));
+    m2 = (int **)malloc(n * sizeof(int *));
+    m3 = (int **)malloc(n * sizeof(int *));
+
+    for (int i = 0; i < n; ++i)
     {
-      a[i] = malloc(sizeof(int) * n);
-      b[i] = malloc(sizeof(int) * n);
-      result[i] = malloc(sizeof(int) * n);
-      memset(result[i], 0, sizeof(int) * n);
+      m1[i] = (int *)malloc(n * sizeof(int));
+      m2[i] = (int *)malloc(n * sizeof(int));
+      m3[i] = (int *)malloc(n * sizeof(int));
+      memset(m3[i], 0, n * sizeof(int));
     }
 
-    for (int i = 0; i < n; i++)
-      for (int j = 0; j < n; j++)
-        fscanf(fd, "%d", &a[i][j]);
+    for (int i = 0; i < n; ++i)
+      for (int j = 0; j < n; ++j)
+        fscanf(f, "%d", &m1[i][j]);
 
-    for (int i = 0; i < n; i++)
-      for (int j = 0; j < n; j++)
-        fscanf(fd, "%d", &b[i][j]);
+    for (int i = 0; i < n; ++i)
+      for (int j = 0; j < n; ++j)
+        fscanf(f, "%d", &m2[i][j]);
 
-    fclose(fd);
+    for (int i = 0; i < n; ++i)
+      for (int j = 0; j < n; ++j)
+        for (int k = 0; k < n; ++k)
+          m3[i][j] += m1[i][k] * m2[k][j];
 
-    for (int i = 0; i < n; i++)
-      for (int j = 0; j < n; j++)
-        for (int k = 0; k < n; k++)
-          result[i][j] += a[i][k] * b[k][j];
-
-    // don't need these matrixes anymore
-    for (int i = 0; i < n; i++)
+    if (write(c2p[1], &n, sizeof(int)) < 0)
     {
-      free(b[i]);
-      free(a[i]);
-    }
-    free(a);
-    free(b);
-
-    if (0 > write(c2p[1], &n, sizeof(int)))
-    {
-      perror("Error when writing the matrix size from the child process");
-      for (int i = 0; i < n; i++)
-        free(result[i]);
-      free(result);
       close(c2p[1]);
+      perror("write");
+      for (int i = 0; i < n; ++i)
+      {
+        free(m1[i]);
+        free(m2[i]);
+        free(m3[i]);
+      }
+      free(m1);
+      free(m2);
+      free(m3);
       exit(1);
     }
-    // we can send the matrix row by row because malloc allocates a chunk of continuous memory
-    // alternatively, we can send element by element (this makes more write operations, but still gets the job done)
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < n; ++i)
     {
-      if (0 > write(c2p[1], result[i], n * sizeof(int)))
+      if (write(c2p[1], m3[i], n * sizeof(int)) < 0)
       {
-        perror("Error when writing result row to the parent");
         close(c2p[1]);
-        for (int i = 0; i < n; i++)
-          free(result[i]);
-        free(result);
+        perror("write");
+        for (int i = 0; i < n; ++i)
+        {
+          free(m1[i]);
+          free(m2[i]);
+          free(m3[i]);
+        }
+        free(m1);
+        free(m2);
+        free(m3);
         exit(1);
       }
     }
-    for (int i = 0; i < n; i++)
-      free(result[i]);
-    free(result);
+    for (int i = 0; i < n; ++i)
+    {
+      free(m1[i]);
+      free(m2[i]);
+      free(m3[i]);
+    }
+    free(m1);
+    free(m2);
+    free(m3);
     close(c2p[1]);
     exit(0);
   }
   else
   {
+    // Parent code
     close(c2p[1]);
-    int n;
-    if (0 > read(c2p[0], &n, sizeof(int)))
+    int n, **m3;
+    if (read(c2p[0], &n, sizeof(int)) < 0)
     {
-      perror("Error reading matrix size in the parent process");
-      wait(0);
+      close(c2p[0]);
+      perror("read");
       exit(1);
     }
-    int **result;
-    result = malloc(sizeof(int *) * n);
-    for (int i = 0; i < n; i++)
+    m3 = (int **)malloc(n * sizeof(int *));
+    for (int i = 0; i < n; ++i)
     {
-      result[i] = malloc(sizeof(int) * n);
-      if (0 > read(c2p[0], result[i], sizeof(int) * n))
+      m3[i] = (int *)malloc(n * sizeof(int));
+      if (read(c2p[0], m3[i], n * sizeof(int)) < 0)
       {
-        perror("Error reading row from child");
-        for (int j = 0; j <= i; i++)
-        {
-          free(result[j]);
-        }
-        free(result);
-        wait(0);
+        close(c2p[0]);
+        perror("read");
+        for (int i = 0; i < n; ++i)
+          free(m3[i]);
+        free(m3);
         exit(1);
       }
     }
-    for (int i = 0; i < n; i++, printf("\n"))
-      for (int j = 0; j < n; j++)
-        // format to print integers as if they would have 4 digits; makes spacing slightly prettier
-        printf("%4d", result[i][j]);
-
-    for (int i = 0; i < n; i++)
-      free(result[i]);
-    free(result);
-    wait(0);
+    for (int i = 0; i < n; ++i)
+    {
+      for (int j = 0; j < n; ++j)
+        printf("%d ", m3[i][j]);
+      printf("\n");
+    }
+    for (int i = 0; i < n; ++i)
+      free(m3[i]);
+    free(m3);
+    close(c2p[0]);
+    wait(NULL);
   }
-
   return 0;
 }
