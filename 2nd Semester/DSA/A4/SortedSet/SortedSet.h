@@ -4,6 +4,7 @@ typedef int TElem;
 typedef TElem TComp;
 typedef bool (*Relation)(TComp, TComp);
 #define NULL_TELEM -111111
+#define INITIAL_CAPACITY 17
 class SortedSetIterator;
 
 class SortedSet
@@ -60,6 +61,8 @@ public:
 	int getCapacity() const { return this->capacity; };
 
 	Relation relation() const { return this->rel; };
+
+	bool isSubset(const SortedSet &s) const;
 
 	// checks if the sorted set is empty
 	bool isEmpty() const;

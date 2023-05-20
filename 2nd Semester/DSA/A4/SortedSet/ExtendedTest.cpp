@@ -31,6 +31,38 @@ bool rLessEqual(TComp e1, TComp e2)
 	}
 }
 
+void testIsSubset(Relation r)
+{
+	cout << "Test subset" << endl;
+	SortedSet s(r), subset(r);
+	assert(s.size() == 0);
+	assert(s.isEmpty() == true);
+
+	for (int i = 0; i <= 1000; i++)
+		s.add(i);
+	// Check that the empty set is a subset of any set
+	assert(s.isSubset(subset) == true);
+
+	subset.add(10001);
+	assert(s.isSubset(subset) == false);
+	subset.remove(10001);
+
+	// Check that for any element, the set containing only that element is a subset
+	subset.add(0);
+	assert(s.isSubset(subset) == true);
+	// Check for first half of the subset
+	for (int i = 0; i <= 1000; i += 2)
+		subset.add(i);
+	assert(s.isSubset(subset) == true);
+	// Check for the last half of the subset
+	for (int i = 1; i <= 1000; i += 2)
+		subset.add(i);
+	assert(s.isSubset(subset) == true);
+	// Add an element that is not in the set
+	subset.add(1001);
+	assert(s.isSubset(subset) == false);
+}
+
 void testIteratorSteps(SortedSet &sset, Relation r)
 {
 	SortedSetIterator si = sset.iterator();
@@ -377,4 +409,6 @@ void testAllExtended()
 	testIterator(rGreater);
 	testQuantity(rLessEqual);
 	testQuantity(rGreater);
+	testIsSubset(rLessEqual);
+	testIsSubset(rGreater);
 }

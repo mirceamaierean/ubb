@@ -45,7 +45,7 @@ void SortedSet::resize(int newCapacity)
 SortedSet::SortedSet(Relation r)
 {
 	this->rel = r;
-	this->capacity = 17;
+	this->capacity = INITIAL_CAPACITY;
 	this->nrElements = 0;
 	this->next = new int[this->capacity];
 	this->elements = new TElem[this->capacity];
@@ -136,6 +136,18 @@ int SortedSet::size() const
 {
 	return this->nrElements;
 	return 0;
+}
+
+bool SortedSet::isSubset(const SortedSet &s) const
+{
+	SortedSetIterator it(s);
+	while (it.valid())
+	{
+		if (!this->search(it.getCurrent()))
+			return false;
+		it.next();
+	}
+	return true;
 }
 
 bool SortedSet::isEmpty() const
