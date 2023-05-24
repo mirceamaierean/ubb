@@ -181,18 +181,22 @@ class Graph:
             del self.__in_edges[v]
             del self.__out_edges[v]
 
-    def add_edge_to_graph(self, start_node, end_node, cost):
-        """
-        :param start_node: the start node of the edge
-        :param end_node: the end node of the edge
-        :param edge_id: the id of the edge
-        """
+    def add_edge_directed(self, start_node, end_node, cost):
         self.add_vertex_in_graph(start_node)
         self.add_vertex_in_graph(end_node)
         self.__in_edges[end_node][start_node] = self.__nr_of_edges
         self.__out_edges[start_node][end_node] = self.__nr_of_edges
         self.__edges_cost[self.__out_edges[start_node][end_node]] = cost
         self.__nr_of_edges += 1
+
+    def add_edge_to_graph(self, start_node, end_node, cost):
+        """
+        :param start_node: the start node of the edge
+        :param end_node: the end node of the edge
+        :param edge_id: the id of the edge
+        """
+        self.add_edge_directed(start_node, end_node, cost)
+        self.add_edge_directed(end_node, start_node, cost)
 
     def remove_edge_from_graph(self, start_node, end_node):
         """
