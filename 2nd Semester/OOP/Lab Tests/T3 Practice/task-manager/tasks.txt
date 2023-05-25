@@ -1,0 +1,5 @@
+Solve_OOP_Assignment|120|1
+Respond_to_email|45|2
+Eat_sushi|30|3
+Visit_parent|240|1
+Buy_a_Jacket|120|1
