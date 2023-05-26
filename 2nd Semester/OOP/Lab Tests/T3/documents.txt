@@ -1,0 +1,7 @@
+C++|programming language, object-oriented|It is a general-purpose programming language
+Quadratic equation|Square root, discriminant|a*x^2 + b*x + c = 0
+Java|programming language, Web|Java is well suited for use on the World Wide Web
+Jack Sparrow|pirate, Caribbean, Black Pearl|Protagonist in the Pirates of the Caribbean
+University|higher education, degree|Provide undergraduate and postgraduate education
+Python|programming language, AI|Python is well suited for use on machine learning
+Low School|basic education, degree|Provide undergraduate education
