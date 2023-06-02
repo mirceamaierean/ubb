@@ -9,6 +9,11 @@
 
 using namespace std;
 
+TValue transformDouble(TKey key, TValue value)
+{
+	return value * 2;
+}
+
 bool asc(TKey c1, TKey c2)
 {
 	if (c1 <= c2)
@@ -78,6 +83,38 @@ void testIteratorSteps(SortedMultiMap &m)
 		smmi.next();
 	}
 	assert(c == m.size());
+}
+
+void testTransformer(Transformer t, Relation r)
+{
+	SortedMultiMap smm(r);
+
+	int maxValue = 20;
+
+	int initialSum = 0;
+
+	for (int i = 1; i < 10; ++i)
+	{
+		for (int j = 0; j < 10; ++j)
+		{
+			smm.add(i, j);
+			smm.add(maxValue - i, j);
+			initialSum += 2 * j;
+		}
+	}
+
+	smm.replaceAll(t);
+
+	SMMIterator smit = smm.iterator();
+	smit.first();
+
+	int sum = 0;
+	while (smit.valid())
+	{
+		sum += smit.getCurrent().second;
+		smit.next();
+	}
+	assert(sum == 2 * initialSum);
 }
 
 void testRelation(Relation r)
@@ -303,4 +340,6 @@ void testAllExtended()
 	testRemove();
 	testIterator();
 	testRelations();
+	testTransformer(transformDouble, asc);
+	testTransformer(transformDouble, desc);
 }

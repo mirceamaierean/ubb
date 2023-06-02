@@ -231,6 +231,21 @@ bool SortedMultiMap::isEmpty() const
 	return this->sizeOfBST == 0;
 }
 
+void SortedMultiMap::recursiveReplaceAll(Node *node, Transformer t)
+{
+	if (node == NULL)
+		return;
+	for (int i = 0; i < node->size; i++)
+		node->values[i] = t(node->key, node->values[i]);
+	this->recursiveReplaceAll(node->left, t);
+	this->recursiveReplaceAll(node->right, t);
+}
+
+void SortedMultiMap::replaceAll(Transformer t)
+{
+	this->recursiveReplaceAll(this->root, t);
+}
+
 // Best case: Theta(1), Worst case: Theta(1), Average case: Theta(1)
 SMMIterator SortedMultiMap::iterator() const
 {

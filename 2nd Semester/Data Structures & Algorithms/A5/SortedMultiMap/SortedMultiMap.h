@@ -11,6 +11,8 @@ typedef std::pair<TKey, TValue> TElem;
 #define NULL_TELEM pair<TKey, TValue>(-111111, -111111);
 using namespace std;
 class SMMIterator;
+
+typedef TValue (*Transformer)(TKey, TValue);
 typedef bool (*Relation)(TKey, TKey);
 
 typedef struct Node
@@ -49,6 +51,10 @@ public:
 
     // verifies if the sorted multi map is empty
     bool isEmpty() const;
+
+    void recursiveReplaceAll(Node *node, Transformer t);
+
+    void replaceAll(Transformer t);
 
     void deleteNodeWhenNoChildren(Node *node, Node *parentNode);
     void deleteNodeWhenOneChild(Node *node, Node *parentNode);
