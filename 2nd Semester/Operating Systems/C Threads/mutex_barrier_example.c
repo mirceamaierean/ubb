@@ -1,9 +1,8 @@
 #include "barrier.h"
+#include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <sys/types.h>
-#include <pthread.h>
 #include <string.h>
 
 typedef struct
@@ -33,15 +32,10 @@ void *f(void *a)
 
 int main(int argc, char *argv[])
 {
-  if (argc < 2)
-  {
-    printf("please provide a number as argument\n");
-    exit(1);
-  }
+  int numberOfThreads = 10;
 
-  srandom(getpid());
-
-  int numberOfThreads = atoi(argv[1]);
+  if (argc >= 2)
+    numberOfThreads = atoi(argv[1]);
 
   pthread_mutex_t *mutex = malloc(sizeof(pthread_mutex_t));
   pthread_mutex_init(mutex, NULL);
