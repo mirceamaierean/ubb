@@ -3,6 +3,14 @@
 #include <QWidget>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QComboBox>
+#include <QMessageBox>
+#include "Service.h"
+#include "FileWatchList.h"
+#include "CSVWatchList.h"
+#include "HTMLWatchList.h"
 
 namespace CONSTANTS
 {
@@ -12,20 +20,41 @@ namespace CONSTANTS
 class UserWidget : public QWidget
 {
     Q_OBJECT
+private:
+    Service &service;
+    QPushButton *filterMoviesByGenre,
+                *deleteMovieFromWatchlistButton,
+                *giveLikeAndDeleteMovie,
+                *addMovieToWatchList,
+                *nextMovie,
+                *exportWatchlist;
+    QLineEdit *movieGenreInputFilter,
+              *movieTitleInput,
+              *movieGenreInput,
+              *indexOfMovieInPlaylist,
+              *movieYearInput;
+    QComboBox *watchFileType;
 
 public:
-    UserWidget(QWidget *parent = nullptr);
-    ~UserWidget(){};
+    UserWidget(Service &service, QWidget *parent = nullptr);
+    ~UserWidget() {};
     QHBoxLayout *createComboBoxLayout();
-    void createMovieGenreFilterSearch(QHBoxLayout *movieGenreGroupFilter);
     QHBoxLayout *createGenreGroupFilter();
     QVBoxLayout *createDeleteMovieFromWatchListLayout();
     QHBoxLayout *createMovieTitleLayout();
     QHBoxLayout *createMovieGenreLayout();
     QHBoxLayout *createMovieYearLayout();
-    QVBoxLayout *createMovieInformationLayout(QHBoxLayout *movieGenreGroupFilter);
     QHBoxLayout *createButtonsLayout();
     QVBoxLayout *createWatchListInformation(QHBoxLayout *movieGenreGroupFilter, QVBoxLayout *deleteMovieFromWatchlistLayout);
+    void connectSignalsAndSlots();
+    public slots:
+    void filterMoviesByGenreHandler();
+    void deleteMovieFromWatchlistByTitleHandler();
+    void addMovieToWatchListHandler();
+    void nextMovieHandler();
+    void exportWatchlistHandler();
+    void watchlistFileTypeHandler();
+    void likeMovieAndDeleteIt();
 };
 
 #endif // USERWIDGET_H

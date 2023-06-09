@@ -302,7 +302,7 @@ void UI::userDeleteMovieFromWatchList()
   {
     try
     {
-      this->service.increaseLikesCountOfMovie(moviesFromWatchList[positionOfMovieToBeDeleted]);
+        this->service.increaseLikesCountOfMovie(moviesFromWatchList[positionOfMovieToBeDeleted]);
       std::cout << "Likes count increased successfully!\n";
     }
     catch (const std::exception &e)
@@ -311,7 +311,7 @@ void UI::userDeleteMovieFromWatchList()
       return;
     }
   }
-  this->service.removeWatchedMovieFromWatchList(positionOfMovieToBeDeleted);
+  this->service.removeWatchedMovieFromWatchList(positionOfMovieToBeDeleted, false);
   std::cout << "Movie deleted successfully!\n";
 }
 

@@ -1,0 +1,5 @@
+/Users/mirceamaierean/ubb-portfolio/2nd Semester/Object Oriented Programming/Lab Tests/T3/cmake-build-debug/CMakeFiles/t3_914maiereanmircea.dir
+/Users/mirceamaierean/ubb-portfolio/2nd Semester/Object Oriented Programming/Lab Tests/T3/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/mirceamaierean/ubb-portfolio/2nd Semester/Object Oriented Programming/Lab Tests/T3/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/mirceamaierean/ubb-portfolio/2nd Semester/Object Oriented Programming/Lab Tests/T3/cmake-build-debug/CMakeFiles/t3_914maiereanmircea_autogen_timestamp_deps.dir
+/Users/mirceamaierean/ubb-portfolio/2nd Semester/Object Oriented Programming/Lab Tests/T3/cmake-build-debug/CMakeFiles/t3_914maiereanmircea_autogen.dir

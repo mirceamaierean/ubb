@@ -8,18 +8,14 @@
 
 using namespace CONSTANTS;
 
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent), ui(new Ui::MainWindow)
-{
+MainWindow::MainWindow(Service &service, QWidget *parent)
+        : service{service}, QMainWindow{parent}, ui{new Ui::MainWindow} {
     ui->setupUi(this);
-    this->service = Service();
 
-    try
-    {
+    try {
         this->service.setTypeOfRepository(new FileRepository{FILENAME});
     }
-    catch (FileException &exception)
-    {
+    catch (FileException &exception) {
         std::cout << exception.what() << "\n";
     }
 
@@ -38,8 +34,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     this->setWindowTitle("Movie Management App");
 
-    QWidget *adminWidget = new AdminWidget(this, this->service.getMovies());
-    QWidget *userWidget = new UserWidget;
+    QWidget *adminWidget = new AdminWidget(this->service);
+    QWidget *userWidget = new UserWidget(this->service);
 
     QLabel *welcomeLabel = new QLabel("Welcome! Please select the credentials for this application");
     QStackedLayout *stackedLayout = new QStackedLayout();
@@ -52,17 +48,21 @@ MainWindow::MainWindow(QWidget *parent)
 
     this->resize(INITIAL_WIDTH, INITIAL_HEIGHT);
 
-    connect(actionAdmin, &QAction::triggered, this, [=]()
-            {
+    connect(actionAdmin, &QAction::triggered, this, [=]() {
         this->resize(ADMIN_WIDTH, ADMIN_HEIGHT);
-        stackedLayout->setCurrentIndex(ADMIN_LAYOUT_INDEX); });
+        stackedLayout->setCurrentIndex(ADMIN_LAYOUT_INDEX);
+    });
 
-    connect(actionUser, &QAction::triggered, this, [=]()
-            { this->resize(USER_WIDTH, USER_HEIGHT);
-                  stackedLayout->setCurrentIndex(USER_LAYOUT_INDEX); });
+    connect(actionUser, &QAction::triggered, this, [=]() {
+        this->resize(USER_WIDTH, USER_HEIGHT);
+        stackedLayout->setCurrentIndex(USER_LAYOUT_INDEX);
+    });
 }
 
-MainWindow::~MainWindow()
-{
+MainWindow::~MainWindow() {
     delete ui;
+}
+
+void MainWindow::addMovie(Movie movie) {
+    this->service.addMovie(movie);
 }

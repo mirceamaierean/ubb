@@ -1,0 +1,11 @@
+# ninja log v5
+1	62	1686139419869211775	t3_914maiereanmircea_autogen/timestamp	f046b39d87e9549a
+1	62	1686139419869211775	t3_914maiereanmircea_autogen/mocs_compilation.cpp	f046b39d87e9549a
+1	62	1686139419869211775	/Users/mirceamaierean/ubb-portfolio/2nd Semester/Object Oriented Programming/Lab Tests/T3/cmake-build-debug/t3_914maiereanmircea_autogen/timestamp	f046b39d87e9549a
+1	62	1686139419869211775	/Users/mirceamaierean/ubb-portfolio/2nd Semester/Object Oriented Programming/Lab Tests/T3/cmake-build-debug/t3_914maiereanmircea_autogen/mocs_compilation.cpp	f046b39d87e9549a
+63	99	1686139419912011331	CMakeFiles/t3_914maiereanmircea.dir/t3_914maiereanmircea_autogen/mocs_compilation.cpp.o	6eac68fa593b3c81
+63	1106	1686139420912220856	CMakeFiles/t3_914maiereanmircea.dir/Repository.cpp.o	4136a0eade4f97c7
+64	1116	1686139420924474329	CMakeFiles/t3_914maiereanmircea.dir/Service.cpp.o	54dc6c66eade0cf5
+63	1727	1686139421535672405	CMakeFiles/t3_914maiereanmircea.dir/main.cpp.o	9a8f4c059b73b7b
+64	1735	1686139421544357133	CMakeFiles/t3_914maiereanmircea.dir/gui.cpp.o	2782838b85903b65
+1736	1938	1686139421747950459	t3_914maiereanmircea	b66e510c9d770f62

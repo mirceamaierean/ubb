@@ -123,14 +123,19 @@ class Service:
         """
         path, minimum_cost = self.find_minimum_cost_walk(
             start_node, end_node)
+        
         if path is None:
             return None
+        
         q = PriorityQueue()
+        
         q.put((0, start_node, -1))
+        
         visited = [False] * self.graph.get_number_of_vertices()
         number_of_walks = [0] * self.graph.get_number_of_vertices()
         minimum_cost_walk = [float("inf")] * \
             self.graph.get_number_of_vertices()
+        
         number_of_walks[start_node] = 1
         minimum_cost_walk[start_node] = 0
         out_edges = self.graph.get_out_edges()

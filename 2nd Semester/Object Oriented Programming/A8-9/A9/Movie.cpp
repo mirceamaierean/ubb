@@ -118,7 +118,7 @@ std::istream &operator>>(std::istream &input, Movie &movie)
                     &trailer = vectorWithTokens[TRAILER],
                     &likesCount = vectorWithTokens[NUMBER_OF_LIKES];
 
-  MovieValidator::validateMovieIdentifiers(title, genre, yearOfRelease, trailer, likesCount);
+    MovieValidator::validateMovieIdentifiers(title, genre, yearOfRelease, trailer, likesCount);
 
   movie.setTitle(title);
   movie.setGenre(genre);

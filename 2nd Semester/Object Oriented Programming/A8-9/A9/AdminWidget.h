@@ -1,5 +1,6 @@
 #ifndef ADMINWIDGET_H
 #define ADMINWIDGET_H
+
 #include <QWidget>
 #include "QtWidgets/qlabel.h"
 #include "QtWidgets/qtablewidget.h"
@@ -7,10 +8,12 @@
 #include <QVBoxLayout>
 #include <QLineEdit>
 #include <vector>
+#include <QMessageBox>
 #include "Movie.h"
+#include "Service.h"
+#include "Exceptions.h"
 
-namespace CONSTANT
-{
+namespace CONSTANT {
     const int TABLE_COLUMN_COUNT = 5;
     const int DEFAULT_SPACING = 20;
     const int TITLE_COLUMN = 0;
@@ -21,23 +24,45 @@ namespace CONSTANT
     const int TITLE_COLUMN_WIDTH = 300;
 }
 
-class AdminWidget : public QWidget
-{
-    Q_OBJECT
+class AdminWidget : public QWidget {
+Q_OBJECT
 private:
-    std::vector<Movie> movies;
-
+    Service &service;
 public:
-    AdminWidget(QWidget *parent = nullptr, std::vector<Movie> movies = {});
-    QTableWidget *createTableWidget();
-    ~AdminWidget(){};
-    QHBoxLayout * createButtonsForManagingMovies();
-    QHBoxLayout * createMovieTitle();
-    QHBoxLayout * createMovieGenreLayout();
-    QHBoxLayout * createMovieYearOfReleaseLayout();
-    QHBoxLayout * createLikesCountLayout();
-    QHBoxLayout * createMovieTrailerLayout();
-    void createMovieInformationLayout(QVBoxLayout *movieInformation);
+    AdminWidget(Service &service, QWidget *parent = nullptr);
+
+    void createTableWidget();
+
+    ~AdminWidget() {};
+    QTableWidget *movieTable;
+    QPushButton *addMovieButton, *deleteMovieButton, *updateMovieButton, *displayPlotButton;
+    QLineEdit *movieTitleInput, *movieGenreInput, *movieYearOfReleaseInput, *movieLikesCountInput, *movieTrailerInput;
+
+    QHBoxLayout *createButtonsForManagingMovies();
+
+    QHBoxLayout *createMovieTitle();
+
+    QHBoxLayout *createMovieGenreLayout();
+
+    QHBoxLayout *createMovieYearOfReleaseLayout();
+
+    QHBoxLayout *createLikesCountLayout();
+
+    QHBoxLayout *createMovieTrailerLayout();
+
+public slots:
+
+    void addMovie();
+
+    void addMovieToTable(const Movie &movie) const;
+
+    void deleteMovie();
+
+    void updateMovie();
+
+    void displayCurrentSelectedMovie();
+
+    void displayPlot();
 };
 
 #endif // ADMINWIDGET_H

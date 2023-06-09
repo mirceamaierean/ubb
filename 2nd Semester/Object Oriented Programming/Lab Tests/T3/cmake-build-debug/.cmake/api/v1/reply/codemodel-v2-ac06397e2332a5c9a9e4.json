@@ -1,0 +1,78 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "t3_914maiereanmircea",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "t3_914maiereanmircea::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-t3_914maiereanmircea-Debug-e3348ec671a2463af9b0.json",
+					"name" : "t3_914maiereanmircea",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "t3_914maiereanmircea_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-t3_914maiereanmircea_autogen-Debug-29a4019f01342b9e70d4.json",
+					"name" : "t3_914maiereanmircea_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "t3_914maiereanmircea_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-t3_914maiereanmircea_autogen_timestamp_deps-Debug-cbfac6f0ef464d4c0f78.json",
+					"name" : "t3_914maiereanmircea_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/mirceamaierean/ubb-portfolio/2nd Semester/Object Oriented Programming/Lab Tests/T3/cmake-build-debug",
+		"source" : "/Users/mirceamaierean/ubb-portfolio/2nd Semester/Object Oriented Programming/Lab Tests/T3"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}
