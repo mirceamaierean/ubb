@@ -7,6 +7,7 @@ public:
   virtual void print() { std::cout << "B\n"; }
   virtual ~B() { std::cout << "~B()\n"; }
 };
+
 class D : public B
 {
 public:

@@ -6,7 +6,7 @@ class B
 {
 public:
   B(){};
-  B(const B &b) { cout << "copy "; }
+  B(const B &b) { cout << "copy B "; }
   virtual void f() { cout << "B.f "; }
   void g(B b) { cout << "B.g "; };
   virtual ~B() { cout << "~B() "; }
@@ -16,6 +16,7 @@ class D : public B
 {
 public:
   D(){};
+  D(const D &d) { cout << "copy D "; }
   void f() { cout << "D.f "; }
   void g(D d) { cout << "D.g "; }
 };

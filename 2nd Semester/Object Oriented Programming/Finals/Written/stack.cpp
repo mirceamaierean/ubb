@@ -43,7 +43,7 @@ public:
      *
      * @param item The item to be pushed onto the stack. item is of type T
      * @return A reference to the modified stack.
-     * @throws std::overflow_error If the stack is already full.
+     * @throws std::runtime_error If the stack is already full.
      */
     if (this->firstFree == this->maxCapacity)
       throw std::runtime_error("Stack is full");
