@@ -1,0 +1,4 @@
+Boss problema noua|closed|Cristi|Aura
+Register button does not work|closed|Cristi|Andrei
+Click on the button does not work|open|Ionut|Mircea
+Does not work|open|Cristi|Andrei
