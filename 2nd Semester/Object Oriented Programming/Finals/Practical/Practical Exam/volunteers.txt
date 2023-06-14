@@ -1,0 +1,12 @@
+Mihai|mihai@yahoo.com|Sports,IT,Puzzles|Sports Club
+Alex|alex@yahoo.com|Movies,Music,Reading|Reading Club
+Ioana|ioana@yahoo.com|Programming,Music,Flying|Sports Club
+Rodgrigo|rodrigo@yahoo.com|Sports,IT,Puzzles|Car Club
+Mihnea|mihnea@yahoo.com|Movies,Music,Reading|Sports Club
+Matei|matei@yahoo.com|Programming,Music,Flying|Car Club
+Andreea|andreea@gmail.com|Mercedes,Ferrari,BMW|Car Club
+Florin|florin@gmail.com|Renault,Dacia|Unassigned
+John|john@gmail.com|Skoda|Reading Club
+Geany|geany@email.com|Football,Basketball|Unassigned
+Marian|marian@yahoo.com|Fantasy,Formula1,Horror,SF,Hokey|Sports Club
+Razvan|razvan@gmail.com|Footbal,Tennis|Unassigned
