@@ -9,6 +9,7 @@ if [ ! -d "$1" ]; then
     echo "Parameter is not a folder"
     exit 1
     fi
+    
 total=0
 for file in $(find $1 -type f | file -f - | grep -E "c program text" | awk -F: '{print $1}'); do
     total=$(($total + $(grep -E -v -c "^[[:space:]]*$" $file)))

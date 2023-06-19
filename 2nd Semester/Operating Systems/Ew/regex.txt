@@ -1,0 +1,9 @@
+. is any character
+[abcdef] is any character in the set
+[^abcdef] is any character not in the set
+waz{3,5} up all the words that start with wa, end with up and have 3 to 5 letters in between
+aa+b*c+ one or more a, followed by any number of b’s followed by one or more c’s
+[0-9]{1,2} files? found\? will select all the lines that have a digit with at least 2 digits, file and s i optional and found with ?
+\d\.\s+abc will select all the lines that have a digit, a dot, one or more spaces and abc
+^Mission: successful$ will select all the lines that start with Mission: successful and end with Mission: successful
+^(file.+)\.pdf$ will select all the lines that start with file, have one or more characters and end with .pdf

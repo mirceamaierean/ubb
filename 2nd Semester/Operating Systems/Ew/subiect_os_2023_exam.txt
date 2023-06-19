@@ -1,0 +1,93 @@
+ssh ex2079@172.30.0.9 -p22
+
+1.
+RO: Daţi trei expresii regulare care acceptă orice număr ne-negativ multiplu de 5.
+EN: Give three regular expressions that match any non-negative number multiple of 5.
+
+2.
+RO: Daţi cinci comenzi GREP care afişează toate liniile dintr-un fişier care conţin litera "a" mare sau mic.
+EN: Give five GREP commands that display all the lines in a file that contain letter "a" uppercase or lowercase.
+
+3.
+RO: Scrieţi două comenzi SED care afişează dintr-un fişier doar liniile care nu conţin cifra 7.
+EN: Write two SED commands that display from a file only the lines that do not contain digit 7.
+
+4.
+RO: Scrieţi o comandă AWK care afişează suma penultimului câmp al tuturor liniilor.
+EN: Write an AWK command that displays the sum of the next to last field of all lines.
+
+5.
+RO: Cum puteţi redirecta în linia de comanda ieşirea de eroare prin pipe înspre un alt program?
+EN: How can you redirect on the command line the standard error through pipe to another program?
+
+6.
+RO: Scrieţi un script Shell UNIX care afişează toate argumentele din linia de comandă fără a folosi FOR.EN: Write a UNIX Shell script that displays all command line arguments without using FOR
+
+7.
+RO: Desenati ierarhia proceselor create de coduld e mai jos, incluzand procesul parinte.
+EN: Draw the hierarchy of processes created by the code below, including the parent process.
+
+    for(i=0; i<3; i++) {
+        fork();
+        execlp("ls", "ls", "/", NULL);
+    }
+
+8.
+RO: Adăugaţi codul C necesar pentru ca fişierul b.txt să fie suprascris cu conţinutul fişierului a.txt din instrucţiunea de mai jos.
+EN: Add the necessary code so that file b.txt is overwritten with the content of file a.txt from the instruction below.
+
+    execlp("cat", "cat", "a.txt", NULL);
+
+9.
+RO: De ce nu e recomandat sa comunicaţi bidirecţional printr-un singur FIFO?
+EN: Why is it not advisable to communicate bidirectionally through a single FIFO?
+
+10.
+RO: Câte FIFO-uri poate deschide un process dacă nu sunt şi nici nu vor fi folosite vreodată de vreun alt proces?
+EN: How many FIFOs can a process open if they are not and will not ever be used by any other process?
+
+11.
+RO: Când aţi folosi un process în locul unui thread?
+EN: When would you prefer using a process instead of a thread?
+
+12.
+RO: Ce este o "secţiune critică"?
+EN: What is a "critical section"?
+
+13.
+RO: De ce un thread trebuie să reverifice condiţia la ieşirea din apelul pthread_cond_wait?
+EN: Why should the thread recheck the condition after returning from the pthread_cond_wait call?
+
+14.
+RO: Care va fi efectul înlocuirii apelurilor la pthread_mutex_lock cu apeluri la pthread_rwlock_rdlock?
+EN: What will be the effect of replacing calls to pthread_mutex_lock with calls to pthread_rwlock_rdlock?
+
+15.
+RO: Care e efectul apelului la pthread_barrier_wait pentru o barieră iniţializată cu 1?
+EN: What is the effect of calling pthread_barrier_wait on a barrier initialized with 1?
+
+16.
+RO: Cum puteţi incrementa valoarea unui semafor?
+EN: How can you increment the value of a POSIX semaphore?
+
+
+17.
+RO: Ce puteţi face ca programator pentru a preveni deadlock-urile?
+EN: What can you do as a software developer to prevent deadlocks?
+
+
+18.
+RO: Prin ce tranziţie de stare va trece un process când citeşte dintr-un fişier?
+EN: What state transition will a process undergo when reading from a file?
+
+19.
+RO: Ce conţinue superblocul unui disc Linux?
+EN: What is the content of the superblock on a Linux disk?
+
+20.RO: Se poate crea un link hard spre un fişier aflat pe o altă partiţie? Justificaţi răspunsul.
+EN: Can you create a hard link towards a file on a different partition? Justify your answer.
+
+
+
+
+
