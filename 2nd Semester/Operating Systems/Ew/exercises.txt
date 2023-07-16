@@ -56,7 +56,7 @@ B/A * B/A * B/A = B^3/A^3
 Why? Because we have 3 levels of indirection, and each level is a block of size B/A. Thus, we have B/A blocks in the first level, B/A blocks in the second level, and B/A blocks in the third level. Thus, we have B/A * B/A * B/A blocks in total.
 
 9) Write a regular expression that accepts lines that contain "a", but not "b"
-^[^b].*a.*$
+^[^b]*a[^b]*$
 ^(?!.*b).*a.*$
 Let's break it down:
 (?!.*b) => negative lookahead, which means that the expression will not match if the line contains "b"

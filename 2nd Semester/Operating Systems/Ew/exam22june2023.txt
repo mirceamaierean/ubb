@@ -1,0 +1,67 @@
+1. RO: Daţi o expresie regulară care acceptă orice număr impar de cuvinte separate prin spaţii, fiecare cuvânt având număr impar de litere.
+EN: Give a regular expression that matches any odd number of words, each word having an odd number of letters.
+
+2. RO: Daţi patru comenzi care afişează numărul de linii goale dintr-un fişier.-8, 8
+EN: Give four commands that display the number of empty lines in a file.
+
+3. RO: Scrieţi o comandă SED care afişează liniile dintr-un fişier ştergând din ele primul, al treilea, al cincilea, al şaptelea, etc spaţii.
+EN: Write a SED command that displays a file's lines deleting the first, the third, the fifth, the seventh, etc space on those lines
+
+4. RO: Scrieţi o comandă AWK care afişează produsul ultimului câmp al liniilor de pe poziţii impare care au număr impar de câmpuri.
+EN: Write an AWK command that displays the product of the last field of lines on odd positions having an odd number of fields.
+
+5. RO: Daţi patru moduri prin care ieşirea standard a unui proces poate fi redirectată.
+EN: Give four ways of redirecting the standard output of a process.
+
+6. RO: Scrieţi trei condiţii Shell UNIX care verifică existenţa unui fişier.
+EN: Write three UNIX Shell conditions that check the existence of a file.
+
+7. RO: Desenati ierarhia proceselor create de coduld e mai jos, incluzand procesul parinte.
+EN: Draw the hierarchy of processes created by the code below, including the parent process.
+
+    for(i=0; i<3; i++) {
+        if(execlp("ls", "ls", "/", NULL) != -1) {
+            fork();
+        }
+    }
+
+8. RO: Adăugaţi codul C necesar pentru ca instrucţiunea de mai jos să nu se blocheze aşteptând la intrarea standard.
+EN: Add the necessary code so that the instruction below does not get stuck waiting for standard input.
+
+    execlp("cat", NULL);
+
+9. RO: Schiţaţi o implementare a funcţiilor popen şi pclose, doar pentru cazul în care outputul comenzii e citit în codul C.
+EN: Sketch an implementation of the popen and pclose functions, only for the case when the command output should be read in the C code.
+
+10. RO: Câte FIFO-uri poate deschide pentru citire un process, dacă FIFO-urile sunt şi vor fi întotdeauna folosite de alte procese doar pentru citire?
+EN: How many FIFOs can a process open for reading if the FIFOs are and will ever be used by other processes only for reading?
+
+11. RO: Când aţi folosi un FIFO în locul unui pipe?
+EN: When would you prefer using a FIFO instead of a pipe?
+
+12. RO: Ce este o "secţiune critică"?
+EN: What is a "critical section"?
+
+13. RO: Când aţi folosi un mutex în locul unui rwlock?
+EN: When would you prefer using a mutex instead of a rwlock?
+
+14. RO: Care va fi efectul înlocuirii apelurilor la pthread_mutex_lock cu apeluri la sem_wait?
+EN: What will be the effect of replacing calls to pthread_mutex_lock with calls to sem_wait?
+
+15. RO: Ce face pthread_cond_wait cu mutex-ul primit ca argument?
+EN: What does pthread_cond_wait do with the mutex it gets as argument?
+
+16. RO: Schiţaţi o soluţie pentru problema producător-consumator.
+EN: Sketch a solution for the producer-consumer problem.
+
+17. RO: Ce puteţi face ca programator pentru a preveni deadlock-urile?
+EN: What can you do as a software developer to prevent deadlocks?
+
+18. RO: Prin ce tranziţie de stare va trece un process când apelează pthread_cond_wait? Justificaţi răspunsul.
+EN: What state transition will a process undergo when it calls pthread_cond_wait? Justify your answer.
+
+19. RO: Ce conţinue un fişier de tip director în sistemul de fişiere Linux?
+EN: What is the content of file of type directory in the Linux file system?
+
+20. RO: Explicaţi diferenţa dintre un link simbolic şi un link hard.
+EN: Explain the difference between a symbolic link and a hard link.

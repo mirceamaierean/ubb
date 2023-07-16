@@ -18,6 +18,7 @@ void *f(void *a)
   data d = *((data *)a);
   printf("Thread %d starting...\n", d.id);
   pthread_barrier_wait(d.barr);
+  printf("\n");
   for (int i = 0; i < 100; ++i)
   {
     pthread_mutex_lock(d.mutex);
@@ -32,7 +33,7 @@ void *f(void *a)
 
 int main(int argc, char *argv[])
 {
-  int numberOfThreads = 10;
+  int numberOfThreads = 10000;
 
   if (argc >= 2)
     numberOfThreads = atoi(argv[1]);
@@ -41,7 +42,7 @@ int main(int argc, char *argv[])
   pthread_mutex_init(mutex, NULL);
 
   pthread_barrier_t *barr = malloc(sizeof(pthread_barrier_t));
-  pthread_barrier_init(barr, NULL, numberOfThreads);
+  pthread_barrier_init(barr, NULL, 1);
 
   data *d = malloc(sizeof(data) * numberOfThreads);
 
