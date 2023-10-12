@@ -1,0 +1,101 @@
+DROP TABLE timedSolution;
+DROP TABLE isTrainerOf;
+DROP TABLE Trainer;
+DROP TABLE Cube;
+DROP TABLE Person
+DROP TABLE Club;
+DROP TABLE Session;
+DROP TABLE CubeType;
+DROP TABLE Contest;
+DROP TABLE Organization;
+
+CREATE TABLE Organization (
+   OrgId INT NOT NULL PRIMARY KEY, -- primary key column
+   [Name] VARCHAR(50) NOT NULL,
+   [Country] VARCHAR(50) NOT NULL,
+   [FoundingDate] DATE
+)
+
+CREATE TABLE Contest(
+   CId INT NOT NULL PRIMARY KEY,
+   Name VARCHAR(100) NOT NULL,
+   StartDate DATE NOT NULL,
+   EndDate DATE NOT NULL,
+   OrgId INT NOT NULL,
+   FOREIGN KEY (OrgId) REFERENCES Organization(OrgId),
+)
+
+CREATE TABLE CubeType(
+    CubeTypeId INT NOT NULL PRIMARY KEY,
+    Name VARCHAR(50) NOT NULL,
+    Shape VARCHAR(20) NOT NULL,
+    Description VARCHAR(200)
+)
+
+CREATE TABLE Session(
+   SId INT NOT NULL PRIMARY KEY,
+   CId INT NOT NULL,
+   FOREIGN KEY (CId) REFERENCES Contest(CId),
+   CubeTypeId INT NOT NULL,
+   FOREIGN KEY (CubeTypeId) REFERENCES CubeType(CubeTypeId),
+   StartTime SMALLDATETIME NOT NULL,
+   EndTime SMALLDATETIME NOT NULL,
+   Scramble VARCHAR(100) NOT NULL
+)
+
+CREATE TABLE Club(
+   ClubID INT NOT NULL PRIMARY KEY,
+   Name VARCHAR(50) NOT NULL,
+   Country VARCHAR(50) NOT NULL,
+)
+
+CREATE TABLE Person(
+   PId INT NOT NULL PRIMARY KEY,
+   FirstName VARCHAR(50) NOT NULL,
+   LastName VARCHAR(50) NOT NULL,
+   DateOfBirth DATE,
+   Country VARCHAR(50) NOT NULL,
+   ClubId INT NOT NULL,
+   FOREIGN KEY (ClubId) REFERENCES Club(ClubId),
+)
+
+
+CREATE TABLE Cube(
+   CubeId INT NOT NULL PRIMARY KEY,
+   CubeTypeId INT NOT NULL,
+   FOREIGN KEY (CubeTypeId) REFERENCES CubeType(CubeTypeId),
+   PId INT NOT NULL,
+   FOREIGN KEY (PId) REFERENCES Person(PId),
+   Manufacturer VARCHAR(50) NOT NULL,
+   Model VARCHAR(50) NOT NULL,
+   Options VARCHAR(20) NOT NULL --some cubes can be stickerless, white or black
+)
+
+CREATE TABLE Trainer (
+   TId INT NOT NULL PRIMARY KEY,
+   FirstName VARCHAR(50) NOT NULL,
+   LastName VARCHAR(50) NOT NULL,
+   DoB DATE,
+   ClubId INT NOT NULL,
+   FOREIGN KEY (ClubId) REFERENCES Club(ClubId),
+   Experience INT
+)
+
+CREATE TABLE isTrainerOf (
+   TId INT NOT NULL,
+   FOREIGN KEY (TId) REFERENCES Trainer(TId),
+   PId INT NOT NULL,
+   FOREIGN KEY (PId) REFERENCES Person(PId),
+   PRIMARY KEY (TId, PId)
+)
+
+CREATE TABLE timedSolution(
+   SId INT NOT NULL,
+   FOREIGN KEY (SId) REFERENCES Session(SId),
+   CubeId INT NOT NULL,
+   FOREIGN KEY (CubeId) REFERENCES Cube(CubeId),
+   PRIMARY KEY (SId, CubeId),
+   Time DOUBLE PRECISION NOT NULL,
+   DNF BIT NOT NULL DEFAULT 0,
+)
+GO
