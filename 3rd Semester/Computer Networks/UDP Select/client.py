@@ -36,7 +36,11 @@ def udp_server_init(ip_addr, port):
 
 
 def udp_client_init():
-    return socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
+    client_socket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
+    client_socket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+    print("You are CONNECTED")
+    return client_socket
+
 
 
 def client_program():
