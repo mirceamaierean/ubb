@@ -1,6 +1,8 @@
-import timeit, functools
+import timeit
+import functools
 from random import randint
 import termtables as tt
+
 
 def print_menu():
     '''
@@ -14,6 +16,7 @@ def print_menu():
     print("6. Display on a table how the algorithms behave during Average Case")
     print("7. Exit the program")
 
+
 def generate_n_random_numbers(n):
     '''
     This function generate n natural random numbers that are part of the interval [0, 100]
@@ -25,26 +28,30 @@ def generate_n_random_numbers(n):
 
     return list_of_numbers
 
+
 def generate_sorted_list(n):
-  '''
-  This function generate n natural random numbers that are part of the interval [0, 100] and are in increasing order
-  '''
-  list_of_numbers = generate_n_random_numbers(n)
-  list_of_numbers.sort()
-  return list_of_numbers
+    '''
+    This function generate n natural random numbers that are part of the interval [0, 100] and are in increasing order
+    '''
+    list_of_numbers = generate_n_random_numbers(n)
+    list_of_numbers.sort()
+    return list_of_numbers
+
 
 def generate_reverse_sorted_list(n):
-  '''
-  This function generate n natural random numbers that are part of the interval [0, 100] and are in decreasing order
-  '''
-  list_of_numbers = generate_sorted_list(n)
-  x = list_of_numbers.reverse()
-  return list_of_numbers
+    '''
+    This function generate n natural random numbers that are part of the interval [0, 100] and are in decreasing order
+    '''
+    list_of_numbers = generate_sorted_list(n)
+    x = list_of_numbers.reverse()
+    return list_of_numbers
+
 
 def strand_sort_print_list_after_step(step, list_of_numbers, sorted_list):
     print("Step", step, ":")
     print("The initial list of numbers is", list_of_numbers)
     print("The sorted list is", sorted_list)
+
 
 def add_elements_to_the_sublist(list_of_numbers):
     '''
@@ -62,6 +69,7 @@ def add_elements_to_the_sublist(list_of_numbers):
             list_of_numbers.remove(value)
     return sub_list, list_of_numbers
 
+
 def merge_lists(list1, list2):
     '''
     This algorithm merges two lists
@@ -77,6 +85,7 @@ def merge_lists(list1, list2):
     result.extend(list1 + list2)
     return result
 
+
 def strand_sort(list_of_numbers, step):
     '''
     This algorithm sorts the elements using strand sort
@@ -87,7 +96,7 @@ def strand_sort(list_of_numbers, step):
     iteration_step = 0
     print_step = 1
     if (step == 0):
-      print_step = 0
+        print_step = 0
     sorted_list = []
     while list_of_numbers:
         sub_list, list_of_numbers = add_elements_to_the_sublist(
@@ -100,8 +109,10 @@ def strand_sort(list_of_numbers, step):
             print_step += step
     return sorted_list
 
+
 def cocktail_sort_print_list_after_step(step, list_of_numbers):
     print("Step", step, ":", list_of_numbers)
+
 
 def cocktail_sort(list_of_numbers, n, step):
     '''
@@ -113,7 +124,7 @@ def cocktail_sort(list_of_numbers, n, step):
     iteration_step = 0
     print_step = 1
     if (step == 0):
-      print_step = 0
+        print_step = 0
     swapped_elements = True
     while swapped_elements == True:
         swapped_elements = False
@@ -144,16 +155,20 @@ def cocktail_sort(list_of_numbers, n, step):
 
     return list_of_numbers
 
+
 def calculate_time_for_table(n, list_of_numbers):
-  '''
-  This function calculates the required time for each of the operations for sorting
-  '''
-  copy_of_numbers = list_of_numbers[:]
+    '''
+    This function calculates the required time for each of the operations for sorting
+    '''
+    copy_of_numbers = list_of_numbers[:]
 
-  time_cocktail_sort = timeit.Timer(functools.partial(cocktail_sort, list_of_numbers, n, 0)) 
-  time_strand_sort = timeit.Timer(functools.partial(strand_sort, copy_of_numbers, 0)) 
+    time_cocktail_sort = timeit.Timer(
+        functools.partial(cocktail_sort, list_of_numbers, n, 0))
+    time_strand_sort = timeit.Timer(
+        functools.partial(strand_sort, copy_of_numbers, 0))
 
-  return [n, time_cocktail_sort.timeit(1), time_strand_sort.timeit(1)]
+    return [n, time_cocktail_sort.timeit(1), time_strand_sort.timeit(1)]
+
 
 def solve():
     '''
@@ -161,11 +176,12 @@ def solve():
     '''
     print_menu()
     list_of_numbers = []
-    header = ["Value of n", "Time necessary for Cocktail Sort", "Time necessary for Strand Sort"]
+    header = ["Value of n", "Time necessary for Cocktail Sort",
+              "Time necessary for Strand Sort"]
 
     n = 0
     while True:
-        
+
         option = int(input("Select an option: "))
 
         if option == 1:
@@ -184,58 +200,58 @@ def solve():
             print("After sorting, the list is", list_of_numbers)
 
         elif option == 4:
-          print("The best case is when the array is already sorted")
-          print("Complexity of Cocktail Sort is O(n)")
-          print("Complexity of Strand Sort is O(n)")
-          print("The table below shows the required time for each of the algorithms")
-          n = 500
-          data = []
-          for i in range(5):
-            list_of_numbers = generate_sorted_list(n)
-            data.append(calculate_time_for_table(n, list_of_numbers))
-            n = n * 2
-          tt.print(
-            data,
-            header = header,
-            padding = (0, 1),
-            style = tt.styles.rounded,
-            alignment = "ccc"
-          )
+            print("The best case is when the array is already sorted")
+            print("Complexity of Cocktail Sort is O(n)")
+            print("Complexity of Strand Sort is O(n)")
+            print("The table below shows the required time for each of the algorithms")
+            n = 500
+            data = []
+            for i in range(5):
+                list_of_numbers = generate_sorted_list(n)
+                data.append(calculate_time_for_table(n, list_of_numbers))
+                n = n * 2
+            tt.print(
+                data,
+                header=header,
+                padding=(0, 1),
+                style=tt.styles.rounded,
+                alignment="ccc"
+            )
 
         elif option == 5:
-          print("The worst case is when the array is already sorted\nComplexity of Cocktail Sort is O(n^2)\nComplexity of Strand Sort is O(n^2)\nThe table below shows the required time for each of the algorithms")
-          n = 500
-          data = []
-          for i in range(5):
-            list_of_numbers = generate_reverse_sorted_list(n)
-            data.append(calculate_time_for_table(n, list_of_numbers))
-            n = n * 2
-          tt.print(
-            data,
-            header = header,
-            padding = (0, 1),
-            style = tt.styles.booktabs,
-            alignment = "ccc"
-          )
+            print("The worst case is when the array is already sorted\nComplexity of Cocktail Sort is O(n^2)\nComplexity of Strand Sort is O(n^2)\nThe table below shows the required time for each of the algorithms")
+            n = 500
+            data = []
+            for i in range(5):
+                list_of_numbers = generate_reverse_sorted_list(n)
+                data.append(calculate_time_for_table(n, list_of_numbers))
+                n = n * 2
+            tt.print(
+                data,
+                header=header,
+                padding=(0, 1),
+                style=tt.styles.booktabs,
+                alignment="ccc"
+            )
 
         elif option == 6:
-          print("The average case is when the array is randomly generated")
-          print("Complexity of Cocktail Sort is O(n^2)")
-          print("Complexity of Strand Sort is O(n^2)")
-          print("The table below shows the required time for each of the algorithms")
-          n = 500
-          data = []
-          for i in range(5):
-            list_of_numbers = generate_n_random_numbers(n)
-            data.append(calculate_time_for_table(n, list_of_numbers))
-            n = n * 2
-          tt.print(
-            data,
-            header=header,
-            style=tt.styles.thick_thin,
-            padding=(0, 1),
-            alignment="ccc"
-          )
+            print("The average case is when the array is randomly generated")
+            print("Complexity of Cocktail Sort is O(n^2)")
+            print("Complexity of Strand Sort is O(n^2)")
+            print("The table below shows the required time for each of the algorithms")
+            n = 500
+            data = []
+            for i in range(5):
+                list_of_numbers = generate_n_random_numbers(n)
+                data.append(calculate_time_for_table(n, list_of_numbers))
+                n = n * 2
+            tt.print(
+                data,
+                header=header,
+                style=tt.styles.thick_thin,
+                padding=(0, 1),
+                alignment="ccc"
+            )
 
         elif option == 7:
             print("Goodbye!")
@@ -243,6 +259,5 @@ def solve():
         else:
             print("You must choose a value from 1 to 7")
 
+
 solve()
-
-
