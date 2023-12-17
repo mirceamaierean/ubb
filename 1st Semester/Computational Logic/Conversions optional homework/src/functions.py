@@ -459,6 +459,7 @@ def convert_using_successive_divisions_method(a, b, h):
   """
   We find the equivalent of b in our digit representation
   """
+  print(b)
   b = list_of_digits[b]
 
   res = ""

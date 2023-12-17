@@ -1,9 +1,0 @@
-The number of 2-dimensional subspaces of the vector space Z^3_2 over Z_2 is 7
-A basis for each subspace is:
-((0, 0, 1), (0, 1, 0))
-((0, 0, 1), (1, 0, 0))
-((0, 0, 1), (1, 1, 0))
-((0, 1, 0), (1, 0, 0))
-((0, 1, 0), (1, 0, 1))
-((0, 1, 1), (1, 0, 0))
-((0, 1, 1), (1, 0, 1))
