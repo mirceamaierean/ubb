@@ -17,7 +17,7 @@
     )
 )
 
-(print (difference '(1 2 3 4 5) '(6 7 8 9)))
+(print (difference '(1 2 3 4 5) '(5 7 8 9)))
 
 ; b) Write a function to reverse a list with its all sublists, on all levels.
 
