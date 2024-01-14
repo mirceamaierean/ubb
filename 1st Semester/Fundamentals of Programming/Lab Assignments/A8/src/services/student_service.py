@@ -16,7 +16,7 @@ class StudentService:
     self.generate_random_values()
 
   def generate_random_values(self):
-    list_of_names = ["Adelina", "Bogdan", "Claudia", "Doru", "Elena", "Florin", "Georgeta", "Horia", "Ioana", "Jean", "Katia", "Luca", "Maria", "Norbert", "Ofelia", "Paul", "Raluca", "Sergiu", "Tara", "Ulise", "Victoria"]
+    list_of_names = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
     for i in range(20):
       id = random.randint(i * 10 + 1, (i + 1) * 10)
       name = random.choice(list_of_names)

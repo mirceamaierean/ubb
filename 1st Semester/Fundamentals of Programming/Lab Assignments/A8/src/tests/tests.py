@@ -167,7 +167,7 @@ class TestStudents(unittest.TestCase):
         student_service.add_student(27, "Toma")
         student_service.add_student(31, "Luca")
         student_service.add_student(38, "Iosif")
-        student_service.add_student(1101, "Maria")
+        student_service.add_student(1101, "Melisa")
 
         studs = student_service.search_student_based_on_id(1)
 
@@ -177,7 +177,7 @@ class TestStudents(unittest.TestCase):
         student_service = StudentService()
         student_service.delete_all_students()
         student_service.add_student(1, "Marcu")
-        student_service.add_student(2, "Maria")
+        student_service.add_student(2, "Melisa")
         student_service.add_student(3, "Matei")
         student_service.add_student(10, "Amalia")
         student_service.add_student(13, "Olimpia")
