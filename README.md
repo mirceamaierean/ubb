@@ -27,6 +27,6 @@
 
 ## [Semester 4️⃣](https://github.com/mirceamaierean/ubb/tree/main/4th%20Semester)
 
-- [Artificial intelligence](https://github.com/mirceamaierean/ubb/tree/main/4th%20Semester/tree/main/Second%20Year/AI)
-- [Web Programming](https://github.com/mirceamaierean/ubb/tree/main/4th%20Semester/tree/main/Second%20Year/web)
+- [Artificial intelligence](https://github.com/mirceamaierean/ubb/tree/main/4th%20Semester/AI)
+- [Web Programming](https://github.com/mirceamaierean/ubb/tree/main/4th%20Semester/web)
 - [SDI](https://github.com/mirceamaierean/mpp)
