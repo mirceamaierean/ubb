@@ -22,13 +22,11 @@
 - [Databases](https://github.com/mirceamaierean/ubb/tree/main/3rd%20Semester/Databases)
 - [Computer Networks](https://github.com/mirceamaierean/ubb/tree/main/3rd%20Semester/Computer%20Networks)
 - [Advanced Programming Methods](https://github.com/mirceamaierean/ubb/tree/main/3rd%20Semester/MAP)
-- [Functional and Logic Programming](https://github.com/mirceamaierean/ubb/tree/main/3rd%20Semester/Logical%20and%20Functional%20Progamming)
-- [Probability & Statistics](https://github.com/mirceamaierean/ubb/tree/main/3rd%20Semester/tree/main/Second%20Year/Probability%20and%20Statistics)
+- [Functional and Logic Programming](https://github.com/mirceamaierean/ubb/tree/main/3rd%20Semester/Functional%20and%Logical%20Progamming)
+- [Probability & Statistics](https://github.com/mirceamaierean/ubb/tree/main/3rd%20Semester/Probability%20and%20Statistics)
 
 ## [Semester 4️⃣](https://github.com/mirceamaierean/ubb/tree/main/4th%20Semester)
 
-- [Artificial intelligence](https://github.com/mirceamaierean/ubb/tree/main/3rd%20Semester/tree/main/Second%20Year/AI)
-- [Web Programming](https://github.com/mirceamaierean/ubb/tree/main/3rd%20Semester/tree/main/Second%20Year/web)
+- [Artificial intelligence](https://github.com/mirceamaierean/ubb/tree/main/4th%20Semester/tree/main/Second%20Year/AI)
+- [Web Programming](https://github.com/mirceamaierean/ubb/tree/main/4th%20Semester/tree/main/Second%20Year/web)
 - [SDI](https://github.com/mirceamaierean/mpp)
-- [Database Management Systems]()
-- [Software Engineering]()
