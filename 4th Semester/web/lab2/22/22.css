@@ -1,0 +1,21 @@
+#blue-box {
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    background-color: blue;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 2s ease-in-out;
+}
+
+#blue-box:hover {
+    transform: translateX(calc(100vw - 200px)) rotate(72000deg);
+}
+
+.primary-text{
+    color: #ffffff;
+    font-size: 2rem;
+    margin-top: 5rem;
+    margin-left: 2rem;
+}
