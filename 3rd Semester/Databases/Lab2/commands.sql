@@ -10,6 +10,11 @@ DELETE FROM Contest;
 DELETE FROM Organization;
 GO
 
+select * from Organization;
+select * from Contest
+
+
+-- Inserting 20 rows for Organization table
 INSERT INTO Organization
 VALUES
     (1, 'Org1', 'Romania', '1995-04-04'),
@@ -19,17 +24,44 @@ VALUES
     (5, 'Org5', 'Hungary', '1975-04-23'),
     (6, 'Org6', 'Brazil', '1988-08-08'),
     (7, 'Org7', 'France', '1999-03-15'),
-    (8, 'Org8', 'Canada', '2005-05-20');
+    (8, 'Org8', 'Canada', '2005-05-20'),
+    (9, 'Org9', 'Japan', '1998-09-09'),
+    (10, 'Org10', 'Germany', '2001-11-11'),
+    (11, 'Org11', 'South Korea', '1985-03-21'),
+    (12, 'Org12', 'Italy', '1996-06-26'),
+    (13, 'Org13', 'Spain', '1982-07-07'),
+    (14, 'Org14', 'Mexico', '1977-08-17'),
+    (15, 'Org15', 'Argentina', '1992-02-28'),
+    (16, 'Org16', 'Russia', '2003-12-31'),
+    (17, 'Org17', 'India', '1987-05-05'),
+    (18, 'Org18', 'United Kingdom', '1994-01-15'),
+    (19, 'Org19', 'Sweden', '1989-10-30'),
+    (20, 'Org20', 'Norway', '1979-11-19');
 
+-- Inserting contests ensuring each organization has at least 5 contests
 INSERT INTO Contest
 VALUES
-    (1, 'Romanian Masters', '2017-09-14', '2017-09-16', 1),
-    (2, 'USA Winter Session', '2015-02-01', '2015-02-02', 2),
-    (3, 'Australian Open', '2016-10-23', '2016-10-25', 3),
-    (4, 'Wuhan Gathering', '2017-04-02', '2017-04-04', 4),
-    (5, 'Brazilian Championship', '2019-07-10', '2019-07-12', 6),
-    (6, 'French Open', '2020-04-05', '2020-04-07', 7),
-    (7, 'Canadian Nationals', '2018-09-18', '2018-09-20', 8);
+    ('Romanian Masters', '2017-09-14', '2017-09-16', 1),
+    ('USA Winter Session', '2015-02-01', '2015-02-02', 2),
+    ('Australian Open', '2016-10-23', '2016-10-25', 3),
+    ('Wuhan Gathering', '2017-04-02', '2017-04-04', 4),
+    ('Brazilian Championship', '2019-07-10', '2019-07-12', 6),
+    ('French Open', '2020-04-05', '2020-04-07', 7),
+    ('Canadian Nationals', '2018-09-18', '2018-09-20', 8),
+    ('Romanian Masters 2', '2018-09-14', '2018-09-16', 1),
+    ('USA Winter Session 2', '2016-02-01', '2016-02-02', 2),
+    ('Australian Open 2', '2017-10-23', '2017-10-25', 3),
+    ('Wuhan Gathering 2', '2018-04-02', '2018-04-04', 4),
+    ('Brazilian Championship 2', '2020-07-10', '2020-07-12', 6),
+    ('French Open 2', '2021-04-05', '2021-04-07', 7),
+    ('Canadian Nationals 2', '2019-09-18', '2019-09-20', 8),
+    ('Romanian Masters 3', '2019-09-14', '2019-09-16', 1),
+    ('USA Winter Session 3', '2017-02-01', '2017-02-02', 2),
+    ('Australian Open 3', '2018-10-23', '2018-10-25', 3),
+    ('Wuhan Gathering 3', '2019-04-02', '2019-04-04', 4),
+    ('Brazilian Championship 3', '2021-07-10', '2021-07-12', 6),
+    ('French Open 3', '2022-04-05', '2022-04-07', 7);
+
 
 INSERT INTO CubeType
 VALUES
@@ -161,7 +193,7 @@ GO
 
 -- -- -- a) 2 queries with the union operation; use UNION [ALL] and OR;
 -- find the number of persons that are from Romania or have a stickerless cube
-    SELECT Person.PId
+    SELECT Person.P
     FROM Person
     WHERE Person.Country = 'Romania'
 UNION

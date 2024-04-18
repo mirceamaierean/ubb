@@ -1,0 +1,25 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+.menu {
+  width: 200px;
+  background-color: #f4f4f4;
+  padding: 20px;
+}
+
+.submenu {
+  padding-left: 20px;
+}
+
+.submenu-item {
+  list-style-type: none;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+.submenu-item:hover {
+  color: blue;
+}
