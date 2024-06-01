@@ -1,0 +1,19 @@
+<!-- src/app/add-room/add-room.component.html -->
+<div class="container text-center">
+    <h5>Add a room</h5>
+    <div class="form-group">
+        <label for="roomNumberField">Room Number:</label>
+        <input type="text" [(ngModel)]="roomNumber" id="roomNumberField" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="categoryField">Category:</label>
+        <input type="text" [(ngModel)]="category" id="categoryField" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="priceField">Price:</label>
+        <input type="text" [(ngModel)]="price" id="priceField" class="form-control">
+    </div>
+    <button (click)="addRoom()" class="btn btn-primary mb-1">Add room</button>
+    <button (click)="viewAllRooms()" class="btn btn-primary mb-1">View all rooms</button>
+    <button (click)="returnToMainPage()" class="btn btn-primary mb-1">Return to main page</button>
+</div>

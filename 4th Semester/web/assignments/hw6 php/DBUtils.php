@@ -50,15 +50,15 @@ class DBConnection
         }
     }
 
-    public function getReservationByUserId($user_id)
+    public function getReservationByUserName($user_name)
     {
-        if (!empty($user_id)) {
+        if (!empty($user_name)) {
             $stmt = $this->pdo->prepare("SELECT reservations.id, rooms.room_number, hotels.name AS hotel_name, reservations.start_date, reservations.end_date
             FROM reservations
             JOIN rooms ON reservations.room_id = rooms.id
             JOIN hotels ON rooms.hotel_id = hotels.id
-            WHERE reservations.user_id = ?");
-            $stmt->execute([$user_id]);
+            WHERE reservations.user_name = ?");
+            $stmt->execute([$user_name]);
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } else {
             http_response_code(500);
@@ -196,10 +196,10 @@ class DBConnection
                     $this->show($result);
                     break;
 
-                case 'getReservationByUserId':
+                case 'getReservationByUserName':
                     session_start();
-                    $user_id = $_GET['user_id'];
-                    $result = $this->getReservationByUserId($user_id);
+                    $user_name = $_GET['user_name'];
+                    $result = $this->getReservationByUserName($user_name);
                     $this->show($result);
                     break;
 

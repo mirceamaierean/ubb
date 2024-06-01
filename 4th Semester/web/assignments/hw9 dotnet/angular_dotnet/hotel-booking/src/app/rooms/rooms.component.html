@@ -1,0 +1,43 @@
+<!-- src/app/rooms/rooms.component.html -->
+<div class="container text-center">
+  <h3>All rooms:</h3>
+  <table class="roomtable table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Hotel name</th>
+        <th>Room number</th>
+        <th>Category</th>
+        <th>Price</th>
+        <th>Book Room</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let room of getCurrentPageItems()">
+        <td>{{ room.id }}</td>
+        <td>{{ room.hotelName }}</td>
+        <td>{{ room.roomNumber }}</td>
+        <td>{{ room.category }}</td>
+        <td>{{ room.price }}</td>
+        <td><button (click)="addReservation(room.id)">+</button></td>
+        <!-- <td><button class="btn btn-primary">Book</button></td> -->
+      </tr>
+    </tbody>
+  </table>
+  <button (click)="goToPreviousPage()" [disabled]="currentPage <= 0" class="btn btn-primary mb-1">Previous</button>
+  <button (click)="goToNextPage()" [disabled]="currentPage >= getPageCount() - 1"
+    class="btn btn-primary mb-1">Next</button>
+  <div class="flex-container">
+    <div class="mb-3">
+      <label for="categoryInputFilter" class="form-label">Category:</label>
+      <input type="text" [(ngModel)]="categoryFilter" class="form-control mb-1">
+      <button (click)="filterByCategory(categoryFilter)" class="btn btn-primary">Filter by category</button>
+    </div>
+    <div class="mb-3">
+      <label for="priceInputFilter" class="form-label">Price:</label>
+      <input type="text" [(ngModel)]="priceFilter" class="form-control mb-1">
+      <button (click)="filterByPrice(priceFilter)" class="btn btn-primary">Filter by price</button>
+    </div>
+  </div>
+  <button (click)="goToMainPage()" class="btn btn-primary mb-1">Return to main page</button>
+</div>
