@@ -1,0 +1,3 @@
+Sports Club|Hiking Football Basketball Baseball Tennis Swimming Hokey Formula1
+Reading Club|Fantasy Romance Horror SF Culture Documentaries Economy
+Car Club|Mercedes Ferrari BMW Dacia Renault Skoda Ford Volkswagen Fiat

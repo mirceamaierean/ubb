@@ -1,0 +1,15 @@
+<!-- src/app/add-hotel/add-hotel.component.html -->
+<div class="container-small text-center" id="addFormDiv">
+    <h1>Add a hotel</h1>
+    <div class="mb-1">
+        <label for="typeField" class="form-label">Name:</label>
+        <input type="text" [(ngModel)]="name" class="form-control" id="typeField">
+    </div>
+    <div class="mb-1">
+        <label for="severityField" class="form-label">Address:</label>
+        <input type="text" [(ngModel)]="address" class="form-control" id="severityField">
+    </div>
+    <button (click)="addHotel()" class="btn btn-primary mb-1">Add hotel</button>
+    <button (click)="viewAllHotels()" class="btn btn-primary mb-1">View all hotels</button>
+    <button (click)="returnToMainPage()" class="btn btn-primary mb-1">Return to main page</button>
+</div>

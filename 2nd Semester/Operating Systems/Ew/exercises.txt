@@ -1,0 +1,320 @@
+1) Write a regular expression that accepts any lines that contain at least three vowels
+[aeiouAEIOU].*[aeiouAEIOU].*[aeiouAEIOU]
+^(.*[aeiouAEIOU]){3}.*$
+
+2) What will the code fragment below print?
+char *s[3] = {"A", "B", "C"};
+for (int i = 0; i < 3; i++){
+  execl("/bin/echo", "/bin/echo", s[i], NULL);
+}
+The program will print only A, because the exec() family of functions replaces the current process with a new process. The loop will never reach B or C.
+
+3) What is the principle of locality regarding pages loading?
+When we load a page, we also load the pages around it, because we are likely to need them soon.
+
+4) Schedule the jobs below (Name/Duration/Deadline) so that the sum of their delays is minimized
+A/5/7 B/2/4 C/4/13 D/3/8
+B, A, D, C
+We have for D a delay of 2, and for C a delay of 1. Total delay is 3
+
+5) What is the risk brought by function f when executed in multiple simultaneous threads? Justify your answer.
+pthread_mutex_t m[2];
+void* f(void* p) {
+    int id = (int)p;
+    pthread_mutex_t* first = &m[id % 2];
+    pthread_mutex_t* second = &m[(id+1) % 2];
+
+    pthread_mutex_lock(first);
+    pthread_mutex_lock(second);
+    ...
+    pthread_mutex_unlock(second);
+    pthread_mutex_unlock(first);
+}
+
+There is a risk for deadlock since the threads do not lock the 2 mutexes in the same order. For example, if there are 2 threads, with ids 0 and 1. The first instructions which would try to be executed by the threads are:
+Thread 0: pthread_mutex_lock(&m[0]);
+Thread 1: pthread_mutex_lock(&m[1]);
+Let's say they both succeed in aquiring the mutex. Then, thread 0 has mutex 0, thread 1 has mutex 1. In the next step, they would try to execute
+Thread 0: pthread_mutex_lock(&m[1]);
+Thread 1: pthread_mutex_lock(&m[0]);
+
+Since thread 1 has mutex 1, thread 0 would wait. Since thread 0 has mutex 0, thread 1 would wait. Thus, they both wait after each other and this creates a deadlock.
+
+6) Give an advantage and a disadvantage of the First Fit placement policy versus the Worst-Fit placing policy
+First Fit: Advantage: It is faster than Worst Fit, because it does not have to search the whole list of free blocks. 
+Disadvantage: It is more likely to leave small holes in the memory => fragmentation
+
+7) What is the most prioritary memory page that the NRU replacement policy chooses as a victim page?
+NRU selects the page that belongs to the first class (class 0) that is not empty. If there are no pages in class 0, it selects the first page in class 1, and so on.
+Class 0: Not referenced, not modified
+Class 1: Not referenced, modified
+Class 2: Referenced, not modified
+Class 3: Referenced, modified
+
+8) Considering that the size of a block is B and the size of an adress is A, how many data blocks are adressed by the triple indirect addressing of an inode?
+B/A * B/A * B/A = B^3/A^3
+Why? Because we have 3 levels of indirection, and each level is a block of size B/A. Thus, we have B/A blocks in the first level, B/A blocks in the second level, and B/A blocks in the third level. Thus, we have B/A * B/A * B/A blocks in total.
+
+9) Write a regular expression that accepts lines that contain "a", but not "b"
+^[^b]*a[^b]*$
+^(?!.*b).*a.*$
+Let's break it down:
+(?!.*b) => negative lookahead, which means that the expression will not match if the line contains "b"
+.*a.* => matches any line that contains "a"
+.*$ => matches the end of the line
+
+
+10) What is the maximum number of child processes, created by the code below, that can coexist simultaneously?
+
+for (i = 0; i < 7; i++){
+  if (fork == 0){
+    sleep(rand() % 10);
+    exit(0);
+  }
+  if (i % 3 == 0)
+    wait(0);
+}
+5
+i = 0 => Creates C => 1 child process
+waits for it to finish => 0 child processes
+i = 1 => Creates C2, does not wait => 1 child process
+i = 2 => Creates C3, does not wait => 2 child processes
+i = 3 => Creates C4 => 3 child processes
+waits for it to finish => 2 child processes
+i = 4 => Creates C5, does not wait => 3 child processes
+i = 5 => Creates C6, does not wait => 4 child processes
+i = 6 => Creates C7 => 5 child processes
+waits for it to finish => 4 child processes
+
+11) How many threads will you used for processing a milion files? Justify your answer.
+Let us assume that we have k cores. Then, we can use k threads for processing the files. This is because the number of threads should be equal to the number of cores, so that we can use all the cores at the same time. If we use more threads than cores, then the threads will have to wait for each other, and this will not be efficient. If we use less threads than cores, then we will not use all the cores at the same time, and this will not be efficient either. I will try after that to use more threads than cores, a multiple of the number of cores, and see if it is more efficient, because there will be threads ready to run when a core becomes available.
+
+12) Why does an I/O operations cause a process to move from the running state to the waiting state?
+Because the process has to wait for the I/O operation to finish before it can continue executing. It also takes a lot of time for the I/O operation to complete, so it is better to put the process in the waiting state, and let another process run in the meantime.
+
+13) How is the address calculation done in the absolute fixed partition-allocation?
+The address is the same as the physical address. The OS does not do any translation.
+In absolute fixed partition allocation, there is a number of predefined partitions in the RAM that can be used by a program.
+This number of partitions is fixed, and a program is compiled for a certain partition.
+This means that the final executable address of a variable in the RAM is known at compile time, so the address in the binary is the same with the final address in the executable. So, Binary address = Physical address. At compile time, the program uses the address of the start of the partition it is compiled for in order to determine its exact final address
+
+
+14) Processes A, B and C communicate through FIFOs X, Y and Z according to the diagram below. Sketch the code fragments that open the FIFOs in the three processes.
+
+    A --X--> B
+    B --Y--> C
+    C --Z--> A
+
+//A.cpp
+int a2b = open("X", O_WRONLY);
+int c2a = open("Z", O_RDONLY);
+
+//B.cpp
+int a2b = open("X", O_RDONLY);
+int b2c = open("Y", O_WRONLY);
+
+//C.cpp
+int b2c = open("Y", O_RDONLY);
+int c2a = open("Z", O_WRONLY);
+
+15) 
+
+Dati un exemplu de valori pentru T, N1, N2 si N3 pentru care programul de mai jos se incheie. 
+
+pthread_barrier_t b1, b2, b3;
+
+void* f1(void* a) {
+  pthread barrier_wait(&bl); 
+  return NULL:
+}
+
+void* f2 (void* a) {
+  pthread_barrier_wait(&b2); 
+  return NULL;
+}
+
+void* f2 (void* a) {
+  pthread_barrier_wait(&b3); 
+  return NULL;
+}
+int main() {
+  int i;
+  pthread_t t[T][3];
+  pthread barrier_init(&b1, N1);
+  pthread_barrier_init(&b2, N2); 
+  pthread_barrier_init(&b3, N3); 
+
+  for (i=0; i<T; i++) {
+    pthread_create(&t[i][0], NULL, f1, NULL); 
+    pthread_create(&t[i][1], NULL, f2, NULL); 
+    pthread_create(&t[1][2], NULL, f3, NULL);
+  }
+
+  for (i=0; i<T; i++) {
+    pthread_join(t[i][0], NULL); 
+    pthread_join(t[i][1], NULL); 
+    pthread_join(t[i][2], NULL);
+  }
+    pthread_barrier_destroy(&b1); 
+    pthread barrier_destroy(&b2); 
+    pthread_barrier_destroy(&b3);
+
+  return NULL;  
+}
+
+T = N1 = N2 = N3 = 3
+
+16) How many processes will the code below create, excluding the parent process?
+
+for(i=0; i<4; i++) {
+    if(fork() && i % 2 == 1) {
+        break;
+    }
+}
+9 child processes
+
+i = 0
+Creates C1 => 1 child process
+
+i = 1 
+P creates C2 => 2 child processes
+P breaks
+C1 creates C3 => 3 child processes
+C1 breaks
+
+i = 2
+C2 creates C4 => 4 child processes
+C3 creates C5 => 5 child processes
+
+i = 3
+C2 creates C6 => 6 child processes
+C2 breaks
+C3 creates C7 => 7 child processes
+C3 breaks
+C4 creates C8 => 8 child processes
+C4 breaks
+C5 creates C9 => 9 child processes
+C5 breaks
+
+17) What will the code fragment below display in the console, considering that the threads are created without problems? Justify your answer.
+
+/* Consider that the necessary headers are included here */
+void* f(void* a) {
+    printf("%d\n", *(int*)a);
+    return NULL;
+}
+
+int main() {
+    /* EN: Consider that the necessary variables are declared here */
+    for(i=0; i<10; i++) {
+        pthread_create(&t[i], NULL, f, &i);
+    }
+    /* EN: Consider that the necessary thread joining is here */
+    return 0;
+}
+
+It is not certain what the threads will print. The output will be one of 10 numbers, each between 0 and 10, but the order and exact value of them is not certain. This is because the threads get the address of i as a parameter, but i is increased during the for. Thus, we cannot determine what happens: maybe i is increased a couple of times before printed by a thread, or maybe multiple threads print the same i. Maybe a thread that read the value of i at some point waits, and another thread gets to print a bigger i before the current thread can print that value.
+
+18) Schedule the jobs below (given as Name/Duration/Deadline) so that the sum of their delays is minimized.
+A/3/8, B/10/15, C/3/5
+
+C: starts at 0, finishes at 3, delay = 0
+A: starts at 3, finishes at 6, delay = 0
+B: start at 6, finishes at 16, delay = 1
+
+Total delay = 1
+
+19) Given two set-associative caches, one with 2 sets of 4 pages and one with 4 sets of 2 pages, which would perform better for the sequence of page requests below? Justify your answer.
+17, 2, 37, 6, 9
+
+We have 2 caches. Using set-associative caches, in order to place a page in cache, we first take the page number modulo number of groups, and then we look for a spot in that group.
+
+First one with 2 sets of 4 pages. Lets say pages 0,1,2,3 are in set 0, pages 4,5,6,7 are in set 1.
+17 mod 2 = 1 -> it could go on page 4
+2 mod 2 = 0 -> it could go on page 0
+37 mod 2 = 1 -> it could go on page 5
+6 mod 2 = 0 -> it could go on page 1
+9 mod 2 = 1 -> it could go on page 6
+
+The second one has 4 sets of 2 pages. Lets say pages 0,1 are in set 0; pages 2,3 are in set 1; pages 4,5 are in set 2; pages 6,7 are in set 3;
+
+17 mod 4 = 1 -> it could go on page 2
+2 mod 4 = 2 -> it could go on page 4
+37 mod 4 = 1 -> it could go on page 3
+6 mod 4 = 2 -> it could go on page 5
+9 mod 4 = 1 -> both pages in this group are full, so the cache would be force to offload a page
+
+Thus, I think the first cache would perform better for this pages, since it does not need to move a cache page back to ram in order to load one from RAM.
+
+20) Considering that a block can contain N addresses towards other blocks, how many data blocks are addressed by an i-node's double and triple indirections together?
+N * N + N * N * N
+Why? Because the double indirection points to N blocks, each of which points to N blocks, and the triple indirection points to N blocks, each of which points to N blocks, each of which points to N blocks.
+
+21) Give an advantage and a disadvantage of fixed partition allocation compared to relocatable partition allocation.
+Advantage: Easier computing of addresses, because we know where each process is located in memory.
+Disadvantage: We cannot use the memory as efficiently, because we might have to leave some space unused if a process doesn't fit in a partition, leading to memory fragmentation.
+
+22) Give an advantage and a disadvantage of loading all the pages of a process in memory at once compared to loading them on demand.
+Advantage: When we try to access a page, it is already in memory, so we don't have to wait for it to be loaded.
+Disadvantage: We might load pages that we don't need, so we waste memory. Also, it takes longer to load all the pages at once.
+
+23) Give an advantage and a disadvantage of direct access cache compared to associative cache.
+Advatage: It is faster to search for a page in the cache, because we know exactly where to look for it.
+Disadvantage: We cannot have multiple pages with the same index in the cache, so we might have to remove a page from the cache even if it is still needed.
+
+24) When does a process changes its state from WAIT to RUN?
+A process changes its state from WAIT to RUN (or, more commonly known as READY) when the event or condition it was waiting for occurs or becomes available. The process transitions from a blocked/waiting state to a ready/runnable state when it is eligible to be scheduled for execution by the operating system.
+
+25) Why a hard-link can be created towards files on the same partition, but not towards files on different partitions?
+As the inode is a data structure used to represent a file-system object, it's internal to the File system, and you can't point to an inode of another file system.
+Thus, hard-links are only valid within the same File system, but soft-links (Symbolic link) can span file systems as they simply point to another directory entry (The interface of the file-system, and not an internal object).
+
+26) Add the necessary source code to the fragment below so that the printf displays in the console
+int p[2];
+pipe(p);
+dup2(p[1], 1);
+printf("asdf\n");
+
+
+#include <stdio.h>
+#include <unistd.h>
+
+int main()
+{
+  int p[2];
+  pipe(p);
+
+  if (fork() == 0)
+  {
+    close(p[1]);   // Close the write end of the pipe in the child process
+    dup2(p[0], 0); // Redirect the read end of the pipe to stdin
+
+    char buffer[256];
+    fgets(buffer, sizeof(buffer), stdin);
+    printf("%s", buffer); // Print the received data from the pipe
+    close(p[0]);          // Close the read end of the pipe in the child process
+  }
+  else
+  {
+    // Parent process
+    close(p[0]);   // Close the read end of the pipe in the parent process
+    dup2(p[1], 1); // Redirect stdout to the write end of the pipe
+
+    printf("asdf\n"); // Write "asdf" to the pipe
+    close(p[1]);      // Close the write end of the pipe in the parent process
+  }
+
+  return 0;
+}
+
+27) What are the elements of a virtual address in the page-segmented allocation, and what tables are involved in calculating the physical address?
+The elements of a virtual address in the page-segmented allocation are the page number and the offset. The tables involved in calculating the physical address are the page table and the segment table.
+
+28) Give 4 regular expressions that specify the number of times the previous expression should appear
+a* -> 0 or more times
+a+ -> 1 or more times
+a? -> 0 or 1 times
+a{x,y} -> between x and y times, inclusive. If x is omitted, it is 0. If y is omitted, it is infinity.
+
+29) A process is opening a FIFO for writing and is the only process in the system that is using or will ever be using that fifo. When will the process finish its execution?
+The process will never finish its execution, because it will be blocked forever. The process will be blocked until another process opens the fifo for reading. Reading and writing to a fifo are complementary operations, so if there is no process reading from the fifo, the process writing to the fifo will be blocked.

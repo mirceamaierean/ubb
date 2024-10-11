@@ -1,0 +1,8 @@
+Star 3|Libra|15|12.5
+Star 13|Libra|-25|37.5
+Star 14|Pisces|14|13
+Star 11|Pisces|-17|32.5
+Star 10|Pisces|-13|30
+Star 20|Pisces|21|121
+Star 4|Taurus|11|15
+Star 8|Taurus|-5|25

@@ -1,0 +1,30 @@
+Type: Neonatal Unit
+Name: Beclean
+Number Of Doctors: 20
+Average Grade: 7.000000
+
+Type: Surgery Unit
+Name: Bistrita
+Number Of Doctors: 40
+Number of Pacients: 40
+
+Type: Neonatal Unit
+Name: Regina Maria
+Number Of Doctors: 25
+Average Grade: 7.000000
+
+Type: Surgery Unit
+Name: Regina Maria
+Number Of Doctors: 10
+Number of Pacients: 10
+
+Type: Neonatal Unit
+Name: Sanovil
+Number Of Doctors: 70
+Average Grade: 9.000000
+
+Type: Surgery Unit
+Name: Sanovil
+Number Of Doctors: 30
+Number of Pacients: 60
+

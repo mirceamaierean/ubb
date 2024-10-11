@@ -1,0 +1,30 @@
+#dialog {
+    width: 400px;
+    height: 200px;
+    border-style: solid;
+    border-color: hsl(0, 0%, 0%);
+    border-width: 1px;
+    border-radius: 5px;
+    
+}
+
+#dialog-header{
+    background-color: rgb(233, 233, 233);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: fit-content;
+    margin: 8px;
+    border-radius: 4px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+#dialog-header span {
+    cursor: pointer;
+    margin: auto 10px;
+}
+
+#dialog p {
+    margin: 8px;
+}

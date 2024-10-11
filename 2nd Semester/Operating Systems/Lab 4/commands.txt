@@ -1,0 +1,33 @@
+1) awk 'NR%2==0, NF=4' file.txt -> Afiseaza primele 4 coloane din linii pare
+2) grep -E -i -v "[0-9a-z]" file.txt -> Afiseaza toate liniile care nu contin litere mici sau cifre, -i face case insensitive, -v face negatia
+grep -E "^[^a-zA-Z0-9]*$" file.txt 
+3) sed -E 's/([0-9]+)/\1\1/g' file.txt -> Adauga la fiecare numar de 2 ori numarul
+4) sed -E 's/ [^ ]*$//' file.txt -> Sterge ultimul cuvant din fiecare linie 
+5) awk 'NF%2==1{i=int((NF+1)/2); print NR" "$i}' file.txt -> Afiseala cuvantul din mijloc pentru linile care au un numar par de cuvint
+6) sed -E "s/^([^:]*):([^:]*):([^:]*)/\1:\3:\2/" file.txt -> Inlocuieste coloana 2 cu 3
+7) 
+8) sed -E 's/^[a-z][a-z]*\b//' file.txt -> Merge pe linux
+
+Exemple site 
+
+1) grep -E "economica" last.fake | grep -E "Sun" | awk '{print $1}' | sort | uniq -> Find all the usernames that logged in from "economica" on a Sunday
+2) sed -E "s/:/ /g" last.fake | awk '$7==23 {print $1}' | sort| uniq -> Find all the users that logged into the system after 11PM
+3) grep -E -i "^m" passwd.fake | sed -E "s/:/ /g" | awk '$3 % 7 == 0 {print $5" "$6}' | sort| uniq -> Display the full names of the users having a username that starts with "m" and with a user ID divisible by 7.
+4) grep -E "^root" ps.fake | awk '{print $6}' | sort | uniq -> Display all the distinct TTYs used by user root.
+5) grep -E "88:" passwd.fake | sed -E "s/:/ /g" | awk '{print $5" "$6}' | sort | uniq -> Find the full names of all the users whose username ends in 88
+6) sed -E "s/:/ /g" passwd.fake | awk '$3 >= 230, $3 <= 239' | awk '{print $5" "$6}' 	-> Find all users whose user ID has three digits and starts with 23
+awk -F: '$3 >= 230, $3 <= 239' passwd.fake | awk -F: '{print $5}' 
+7) grep -E "^t" last.fake |grep -E "pts/9 " | awk '{print $1}' | sort -> Find all usersnames starting with "t" that logged on "pts/9" 
+8) grep -E "^r" ps.fake | awk '{print $1}' | sort |uniq | sed -E 's/([aeiou])/\1\1/g' -> Find all the distinct usernames starting with "r" that are currently running programs, and display them duplicating every vowel -> Display all the distinct lines left in /etc/passwd after deleting all letter and digits and spaces.
+9) sed -E 's/[A-Za-z0-9 ]//g' passwd.fake | sort | uniq -> Display all the distinct lines left in /etc/passwd after deleting all characters except "r".
+10) sed -E 's/[A-Z]/a-z/g' passwd.fake | sed -E 's/[a-qs-z0-9:/ -]//g' | sort | uniq -> Display all the distinct lines left in /etc/passwd after deleting all characters except "r".
+11) grep -E -v "PID" ps.fake | awk '{sum+=$2} END {print sum/NR" "NR}' -> Calculate the average of the PIDs of the processes currently running in the system.
+
+sed -n '/[aeiou]\{2,\}/p' file -> Afiseaza liniile care contin cel putin 2 vocale consecutive
+
+NF - numarul de cuvinte dintr-o linie
+
+grep -E '\b[aeiouAEIOU][^aeiouAEIOU]*[aeiouAEIOU][^aeiouAEIOU]*\b' file.txt -> Cautam cuvinte consecutive cu 2 vocale
+
+grep -o -i mauris example.txt | wc -l -> Numaram cuvintele mauris din fisier
+grep -o -i -c mauris example.txt -> Numaram cuvintele mauris din fisier

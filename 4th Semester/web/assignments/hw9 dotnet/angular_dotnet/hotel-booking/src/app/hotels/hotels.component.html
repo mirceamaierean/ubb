@@ -1,0 +1,30 @@
+<!-- src/app/hotels/hotels.component.html -->
+<div class="container text-center">
+    <h3>All hotels:</h3>
+    <table class="logTable table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Add Room</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let hotel of getCurrentPageItems()">
+                <td>{{ hotel.id }}</td>
+                <td>{{ hotel.name }}</td>
+                <td>{{ hotel.address }}</td>
+                <td><button (click)="addRoom(hotel.id)">+</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <button (click)="goToPreviousPage()">Previous</button>
+    <button (click)="goToNextPage()">Next</button>
+    <div>
+        <input [(ngModel)]="nameFilter" placeholder="Filter by name">
+        <button (click)="filterByName(nameFilter)">Filter by name</button>
+        <input [(ngModel)]="addressFilter" placeholder="Filter by address">
+        <button (click)="filterByAddress(addressFilter)">Filter by address</button>
+    </div>
+</div>

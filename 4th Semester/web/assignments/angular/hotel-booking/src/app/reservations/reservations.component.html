@@ -1,0 +1,32 @@
+<!-- src/app/reservations/reservations.component.html -->
+<div class="container text-center">
+    <h3>All reservations:</h3>
+    <table class="reservationtable table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Room Number</th>
+                <th>Hotel Name</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Edit Button</th>
+                <th>Delete Button</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let reservation of getCurrentPageItems()">
+                <td>{{ reservation.id }}</td>
+                <td>{{ reservation.room_number }}</td>
+                <td>{{ reservation.hotel_name }}</td>
+                <td>{{ reservation.start_date }}</td>
+                <td>{{ reservation.end_date }}</td>
+                <td><button class="btn btn-primary" (click)="editReservation(reservation.id)">Edit</button></td>
+                <td><button class="btn btn-primary" (click)="deleteReservation(reservation.id)">Remove</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <button (click)="goToPreviousPage()" [disabled]="currentPage <= 0" class="btn btn-primary mb-1">Previous</button>
+    <button (click)="goToNextPage()" [disabled]="currentPage >= getPageCount() - 1"
+        class="btn btn-primary mb-1">Next</button>
+    <button (click)="goToMainPage()" class="btn btn-primary mb-1">Return</button>
+</div>

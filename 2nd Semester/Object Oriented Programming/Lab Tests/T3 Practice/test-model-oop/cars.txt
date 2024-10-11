@@ -1,0 +1,6 @@
+Volkswagen|Passat|2013|Black
+Volkswagen|Jetta|2018|Black
+Ford|CMax|2013|Blue
+Skoda|Octavia|2010|Black
+Skoda|Octavia|2010|Turquoise
+Dacia|Sandero Stepway|2023|Grey

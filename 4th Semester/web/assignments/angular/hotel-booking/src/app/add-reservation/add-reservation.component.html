@@ -1,0 +1,15 @@
+<!-- src/app/add-reservation/add-reservation.component.html -->
+<div class="container text-center">
+    <h5>Book a room</h5>
+    <div class="form-group">
+        <label for="startDateField">Start Date:</label>
+        <input type="date" [(ngModel)]="startDate" class="form-control" id="startDateField">
+    </div>
+    <div class="form-group">
+        <label for="endDateField">End Date:</label>
+        <input type="date" [(ngModel)]="endDate" class="form-control" id="endDateField">
+    </div>
+    <button (click)="addReservation()" class="btn btn-primary mb-1">Add reservation</button>
+    <button (click)="viewAllReservations()" class="btn btn-primary mb-1">View all reservations</button>
+    <button (click)="returnToMainPage()" class="btn btn-primary mb-1">Return to main page</button>
+</div>
