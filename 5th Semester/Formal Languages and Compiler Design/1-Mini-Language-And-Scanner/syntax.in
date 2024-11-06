@@ -1,0 +1,29 @@
+<program> ::= <statement-list>
+<statement-list> ::= <statement> | <statement> <statement-list>
+
+<statement> ::= <assignment_statement> | <if_statement> | <while_statement> | <io_statement> | <declaration_statement>
+<assignment_statement> ::= <identifier> = <expression> ;
+<if_statement> ::= if ( <condition> ) { <statement-list> } | if ( <condition> ) { <statement-list> } else { <statement-list> }
+<while_statement> ::= while ( <condition> ) { <statement-list> }
+<io_statement> ::= write(<expression>); | read (<identifier>);
+<declaration_statement> ::= <type> <identifier> = <expression> ;
+
+<identifier> ::= <letter> | <identifier> <letter> | <identifier> <digit> | <identifier> <underscore>
+<expression> ::= <term> | <expression> <addition_operator> <term>
+
+<term> ::= <factor> | <term> <multiplication_operator> <factor>
+<factor> ::= <identifier> | <constant> | ( <expression> )
+
+<condition> ::= <expression> <relational_operator> <expression>
+
+<type> ::= int | float | string | char | <array_type>
+<array_type> ::= array "[" <integer> "]" of <default_type>
+<default_type> ::= int | float | string | char
+<letter> ::= a | b | ... | z | A | B | ... | Z
+<digit> ::= 0 | 1 | ... | 9
+<underscore> ::= _
+
+<relational_operator> ::= == | != | < | > | <= | >=
+<addition_operator> ::= + | -
+<multiplication_operator> ::= * | / | %
+<logical_operator> ::= && | ||

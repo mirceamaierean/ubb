@@ -1,0 +1,29 @@
+Alphabet:
+- letter = 'a' | 'b' | ... | 'z' | 'A' | 'B' | ... | 'Z'
+- digit = '0' | '1' | ... | '9'
+- underscore = '_'
+- space = ' '
+Lexic:
+- special tokens, representing: 
+    - operators: + - * / % = == != < > >= <= && || 
+    - separators: () [] {} ; space newline " '
+    - reserved words: int float char string const if else while read write
+- identifiers:
+    - a sequence of letters and digits, such that the first character is a letter
+    - identifier = letter | letter { letter | digit | underscore }
+- constants:
+    - integer: 
+        - nr_const = ['-'] non-zero-digit { digit } | '0'
+        - non-zero-digit = '1' | '2' | ... | '9'
+    - float:
+        - float_const = ['-'] digit { digit } '.' digit { digit }
+    - character:
+        - character_const = letter | digit | underscore
+    - string:
+        - string_const = """{ letter | digit | underscore | space }"""
+    - array:
+        - integer_array_const = '[' {nr_const} ']'
+        - float_array_const = '[' {float_const} ']'
+        - character_array_const = '[' {character_const} ']'
+        - string_array_const = '[' {string_const} ']'
+        
