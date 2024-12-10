@@ -2,31 +2,39 @@
 
 ## [Semester 1️⃣](https://github.com/mirceamaierean/ubb/tree/main/1st%20Semester)
 
-- [Algebra](https://github.com/mirceamaierean/ubb/tree/main/1st%20Semester/Algebra)
-- [Computational Logic](https://github.com/mirceamaierean/ubb/tree/main/1st%20Semester/Computational%20Logic)
-- [Computer Systems Architecture](https://github.com/mirceamaierean/ubb/tree/main/1st%20Semester/Computer%20System%20Architecture)
-- [Fundamentals of Programming](https://github.com/mirceamaierean/ubb/tree/main/1st%20Semester/Fundamentals%20of%20Programming)
-- [Mathematical Analysis](https://github.com/mirceamaierean/ubb/tree/main/1st%20Semester/Mathematical%20Analysis)
+- [algebra](https://github.com/mirceamaierean/ubb/tree/main/1st%20Semester/Algebra)
+- [computational logic](https://github.com/mirceamaierean/ubb/tree/main/1st%20Semester/Computational%20Logic)
+- [asc](https://github.com/mirceamaierean/ubb/tree/main/1st%20Semester/asc)
+- [fp](https://github.com/mirceamaierean/ubb/tree/main/1st%20Semester/fp)
+- [analysis](https://github.com/mirceamaierean/ubb/tree/main/1st%20Semester/analysis)
 
 ## [Semester 2️⃣](https://github.com/mirceamaierean/ubb/tree/main/2nd%20Semester)
 
-- [Data Structures & Algorithms](https://github.com/mirceamaierean/ubb/tree/main/2nd%20Semester/Data%20Structures%20%26%20Algorithms)
-- [Dynamical Systems](https://github.com/mirceamaierean/ubb/tree/main/2nd%20Semester/Dynamical%20Systems)
-- [Graph Theory](https://github.com/mirceamaierean/ubb/tree/main/2nd%20Semester/Graphs)
-- [Geometry](https://github.com/mirceamaierean/ubb/tree/main/2nd%20Semester/Geometry)
-- [Object-Oriented Programming](https://github.com/mirceamaierean/ubb/tree/main/2nd%20Semester/Object%20Oriented%20Programming)
-- [Operating Systems](https://github.com/mirceamaierean/ubb/tree/main/2nd%20Semester/Operating%20Systems)
+- [dsa](https://github.com/mirceamaierean/ubb/tree/main/2nd%20Semester/dsa)
+- [ds](https://github.com/mirceamaierean/ubb/tree/main/2nd%20Semester/ds)
+- [graphs](https://github.com/mirceamaierean/ubb/tree/main/2nd%20Semester/Graphs)
+- [geometry](https://github.com/mirceamaierean/ubb/tree/main/2nd%20Semester/Geometry)
+- [oop](https://github.com/mirceamaierean/ubb/tree/main/2nd%20Semester/oop)
+- [os](https://github.com/mirceamaierean/ubb/tree/main/2nd%20Semester/os)
 
 ## [Semester 3️⃣](https://github.com/mirceamaierean/ubb/tree/main/3rd%20Semester)
 
-- [Databases](https://github.com/mirceamaierean/ubb/tree/main/3rd%20Semester/Databases)
-- [Computer Networks](https://github.com/mirceamaierean/ubb/tree/main/3rd%20Semester/Computer%20Networks)
-- [Advanced Programming Methods](https://github.com/mirceamaierean/ubb/tree/main/3rd%20Semester/MAP)
-- [Functional and Logic Programming](https://github.com/mirceamaierean/ubb/tree/main/3rd%20Semester/Functional%20and%20Logical%20Programming)
-- [Probability & Statistics](https://github.com/mirceamaierean/ubb/tree/main/3rd%20Semester/Probability%20and%20Statistics)
+- [db](https://github.com/mirceamaierean/ubb/tree/main/3rd%20Semester/db)
+- [cn](https://github.com/mirceamaierean/ubb/tree/main/3rd%20Semester/cn)
+- [map](https://github.com/mirceamaierean/ubb/tree/main/3rd%20Semester/MAP)
+- [plf](https://github.com/mirceamaierean/ubb/tree/main/3rd%20Semester/plf)
+- [ps](https://github.com/mirceamaierean/ubb/tree/main/3rd%20Semester/ps)
 
 ## [Semester 4️⃣](https://github.com/mirceamaierean/ubb/tree/main/4th%20Semester)
 
-- [Artificial intelligence](https://github.com/mirceamaierean/ubb/tree/main/4th%20Semester/AI)
-- [Web Programming](https://github.com/mirceamaierean/ubb/tree/main/4th%20Semester/web)
-- [SDI](https://github.com/mirceamaierean/mpp)
+- [ai](https://github.com/mirceamaierean/ubb/tree/main/4th%20Semester/AI)
+- [web](https://github.com/mirceamaierean/ubb/tree/main/4th%20Semester/web)
+- [dbms](https://github.com/mirceamaierean/ubb/tree/main/4th%20Semester/web)
+- [sdi](https://github.com/mirceamaierean/mpp)
+
+## [Semester 5️⃣](https://github.com/mirceamaierean/ubb/tree/main/5th%20Semester)
+
+- [pdp](https://github.com/mirceamaierean/ubb/tree/main/5th%20Semester/pdp)
+- [flcd](https://github.com/mirceamaierean/ubb/tree/main/5th%20Semester/flcd)
+- [mobile](https://github.com/mirceamaierean/ubb/tree/main/5th%20Semester/mobile)
+- [crypto](https://github.com/mirceamaierean/ubb/tree/main/5th%20Semester/crypto)
