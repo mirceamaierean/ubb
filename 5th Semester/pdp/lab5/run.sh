@@ -1,8 +1,4 @@
 #!/bin/bash
-# Generate a script that creates one file representing 2 polynomials
-# Each polynomial has its degree and coefficients.
-# The file includes n, the degree of the first polynomial, followed by n+1 coefficients,
-# and m, the degree of the second polynomial, followed by m+1 coefficients.
 
 # Ensure the script receives two arguments for the degrees
 if [ "$#" -ne 2 ]; then
