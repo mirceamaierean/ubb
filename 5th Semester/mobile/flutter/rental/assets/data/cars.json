@@ -1,0 +1,101 @@
+[
+  {
+    "id": 1,
+    "make": "BMW",
+    "model": "X3",
+    "color": "Black",
+    "productionYear": 2018,
+    "carburantType": "Diesel",
+    "bodyType": "SUV",
+    "pricePerDay": 70,
+    "photoPath": "assets/images/cars/BMW/BMW.png"
+  },
+  {
+    "id": 2,
+    "make": "Dacia",
+    "model": "1310",
+    "color": "Blue",
+    "productionYear": 1982,
+    "carburantType": "Petrol",
+    "bodyType": "SUV",
+    "pricePerDay": 40,
+    "photoPath": "assets/images/cars/Dacia/Dacia.png"
+  },
+  {
+    "id": 3,
+    "make": "Ford",
+    "model": "Focus",
+    "color": "Blue",
+    "productionYear": 2017,
+    "carburantType": "Petrol",
+    "bodyType": "Hatchback",
+    "pricePerDay": 50,
+    "photoPath": "assets/images/cars/Ford/Ford.png"
+  },
+  {
+    "id": 4,
+    "make": "Honda",
+    "model": "Civic",
+    "color": "Gray",
+    "productionYear": 2016,
+    "carburantType": "Petrol",
+    "bodyType": "Sedan",
+    "pricePerDay": 55,
+    "photoPath": "assets/images/cars/Honda/Honda.png"
+  },
+  {
+    "id": 5,
+    "make": "Mercedes",
+    "model": "CLA",
+    "color": "Blue",
+    "productionYear": 2020,
+    "carburantType": "Diesel",
+    "bodyType": "Sedan",
+    "pricePerDay": 85,
+    "photoPath": "assets/images/cars/Mercedes/Mercedes.png"
+  },
+  {
+    "id": 6,
+    "make": "Porsche",
+    "model": "911",
+    "color": "Red",
+    "productionYear": 2020,
+    "carburantType": "Petrol",
+    "bodyType": "Coupe",
+    "pricePerDay": 150,
+    "photoPath": "assets/images/cars/Porsche/Porsche.png"
+  },
+  {
+    "id": 7,
+    "make": "Renault",
+    "model": "Clio",
+    "color": "White",
+    "productionYear": 2015,
+    "carburantType": "Petrol",
+    "bodyType": "Hatchback",
+    "pricePerDay": 45,
+    "photoPath": "assets/images/cars/Renault/Renault.png"
+  },
+  {
+    "id": 8,
+    "make": "Skoda",
+    "model": "Octavia",
+    "color": "Black",
+    "productionYear": 2009,
+    "carburantType": "Diesel",
+    "bodyType": "Sedan",
+    "pricePerDay": 60,
+    "photoPath": "assets/images/cars/Skoda/Skoda.png"
+  },
+  {
+    "id": 9,
+    "make": "Volkswagen",
+    "model": "Passat",
+    "color": "Black",
+    "productionYear": 2014,
+    "carburantType": "Diesel",
+    "bodyType": "Sedan",
+    "pricePerDay": 55,
+    "photoPath": "assets/images/cars/Volkswagen/Volkswagen.png"
+  }
+]
