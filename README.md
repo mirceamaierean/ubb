@@ -30,7 +30,8 @@
 - [ai](https://github.com/mirceamaierean/ubb/tree/main/4th%20Semester/AI)
 - [web](https://github.com/mirceamaierean/ubb/tree/main/4th%20Semester/web)
 - [dbms](https://github.com/mirceamaierean/ubb/tree/main/4th%20Semester/web)
-- [sdi](https://github.com/mirceamaierean/mpp)
+- [mpp](https://github.com/mirceamaierean/ubb/tree/main/4th%20Semester/mpp)
+- [iss](https://github.com/mirceamaierean/ubb/tree/main/4th%20Semester/iss)
 
 ## [Semester 5️⃣](https://github.com/mirceamaierean/ubb/tree/main/5th%20Semester)
 

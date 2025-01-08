@@ -1,0 +1,30 @@
+<web-app>
+    <!-- Existing servlet mappings -->
+
+    <servlet>
+        <servlet-name>LoginController</servlet-name>
+        <servlet-class>web.controller.LoginController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginController</servlet-name>
+        <url-pattern>/LoginController</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>StartTravelController</servlet-name>
+        <servlet-class>web.controller.StartTravelController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>StartTravelController</servlet-name>
+        <url-pattern>/StartTravelController</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CityController</servlet-name>
+        <servlet-class>web.controller.CityController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CityController</servlet-name>
+        <url-pattern>/CityController</url-pattern>
+    </servlet-mapping>
+</web-app>
