@@ -1,0 +1,29 @@
+N => program statement_list simple_expression statement simple_statement struct_statement arraydecl type declaration_statement assign_statement read_statement print_statement if_statement while_statement condition relation print_type assignee factor simple_type decision_statement else_clause comment expression int_expression int_expression_rest term_rest int_exp_signs term compl_expression
+E => string char int array const else if read while print constant identifier no # + - ; * / % = < <= == != >= > ( ) { } [ ] compl
+S => program
+P =>
+program -> { statement_list }
+statement_list -> statement_list statement | statement
+statement -> simple_statement ; | struct_statement | comment ;
+simple_statement -> read_statement | print_statement | assign_statement | declaration_statement
+read_statement -> read ( identifier )
+print_statement -> print ( print_type )
+print_type -> identifier | constant | string
+assign_statement -> identifier = expression
+declaration_statement -> type identifier
+type -> simple_type | arraydecl
+simple_type -> string | int | char
+arraydecl -> array [ no ] simple_type
+struct_statement -> decision_statement | while_statement
+decision_statement -> if_statement else_clause
+if_statement -> if ( condition ) { statement_list }
+else_clause -> else { statement_list } | epsilon
+while_statement -> while ( condition ) { statement_list }
+condition -> expression relation expression
+relation -> < | <= | == | != | >= | >
+comment -> # string
+expression -> int_expression
+int_expression -> factor int_expression_rest
+int_expression_rest -> int_exp_signs int_expression | epsilon
+factor -> constant | identifier
+int_exp_signs -> + | - | * | / | %

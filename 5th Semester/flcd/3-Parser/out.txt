@@ -1,0 +1,16 @@
+Input accepted. Productions used:
+A -> c
+A -> b A
+A -> b A
+S -> a A
+
+Parsing tree (father-sibling table):
+ID | SYMBOL | FATHER | SIBLING
+0 | a | 7 | 6
+1 | b | 6 | 5
+2 | b | 5 | 4
+3 | c | 4 | -1
+4 | A | 5 | -1
+5 | A | 6 | -1
+6 | A | 7 | -1
+7 | S | -1 | -1

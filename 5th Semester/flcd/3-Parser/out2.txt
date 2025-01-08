@@ -1,0 +1,341 @@
+Input accepted. Productions used:
+simple_type -> int
+type -> simple_type
+declaration_statement -> type identifier
+simple_statement -> declaration_statement
+statement -> simple_statement ;
+statement_list -> statement
+simple_type -> int
+type -> simple_type
+declaration_statement -> type identifier
+simple_statement -> declaration_statement
+statement -> simple_statement ;
+statement_list -> statement_list statement
+simple_type -> int
+type -> simple_type
+declaration_statement -> type identifier
+simple_statement -> declaration_statement
+statement -> simple_statement ;
+statement_list -> statement_list statement
+simple_type -> int
+type -> simple_type
+declaration_statement -> type identifier
+simple_statement -> declaration_statement
+statement -> simple_statement ;
+statement_list -> statement_list statement
+read_statement -> read ( identifier )
+simple_statement -> read_statement
+statement -> simple_statement ;
+statement_list -> statement_list statement
+read_statement -> read ( identifier )
+simple_statement -> read_statement
+statement -> simple_statement ;
+statement_list -> statement_list statement
+read_statement -> read ( identifier )
+simple_statement -> read_statement
+statement -> simple_statement ;
+statement_list -> statement_list statement
+factor -> identifier
+int_expression_rest -> 
+int_expression -> factor int_expression_rest
+expression -> int_expression
+relation -> >=
+factor -> identifier
+int_expression_rest -> 
+int_expression -> factor int_expression_rest
+expression -> int_expression
+condition -> expression relation expression
+factor -> identifier
+int_expression_rest -> 
+int_expression -> factor int_expression_rest
+expression -> int_expression
+relation -> >=
+factor -> identifier
+int_expression_rest -> 
+int_expression -> factor int_expression_rest
+expression -> int_expression
+condition -> expression relation expression
+factor -> identifier
+int_expression_rest -> 
+int_expression -> factor int_expression_rest
+expression -> int_expression
+assign_statement -> identifier = expression
+simple_statement -> assign_statement
+statement -> simple_statement ;
+statement_list -> statement
+if_statement -> if ( condition ) { statement_list }
+factor -> identifier
+int_expression_rest -> 
+int_expression -> factor int_expression_rest
+expression -> int_expression
+assign_statement -> identifier = expression
+simple_statement -> assign_statement
+statement -> simple_statement ;
+statement_list -> statement
+else_clause -> else { statement_list }
+decision_statement -> if_statement else_clause
+struct_statement -> decision_statement
+statement -> struct_statement
+statement_list -> statement
+if_statement -> if ( condition ) { statement_list }
+factor -> identifier
+int_expression_rest -> 
+int_expression -> factor int_expression_rest
+expression -> int_expression
+relation -> >=
+factor -> identifier
+int_expression_rest -> 
+int_expression -> factor int_expression_rest
+expression -> int_expression
+condition -> expression relation expression
+factor -> identifier
+int_expression_rest -> 
+int_expression -> factor int_expression_rest
+expression -> int_expression
+assign_statement -> identifier = expression
+simple_statement -> assign_statement
+statement -> simple_statement ;
+statement_list -> statement
+if_statement -> if ( condition ) { statement_list }
+factor -> identifier
+int_expression_rest -> 
+int_expression -> factor int_expression_rest
+expression -> int_expression
+assign_statement -> identifier = expression
+simple_statement -> assign_statement
+statement -> simple_statement ;
+statement_list -> statement
+else_clause -> else { statement_list }
+decision_statement -> if_statement else_clause
+struct_statement -> decision_statement
+statement -> struct_statement
+statement_list -> statement
+else_clause -> else { statement_list }
+decision_statement -> if_statement else_clause
+struct_statement -> decision_statement
+statement -> struct_statement
+statement_list -> statement_list statement
+print_type -> identifier
+print_statement -> print ( print_type )
+simple_statement -> print_statement
+statement -> simple_statement ;
+statement_list -> statement_list statement
+program -> { statement_list }
+
+Parsing tree (father-sibling table):
+ID | SYMBOL | FATHER | SIBLING
+0 | { | 214 | 212
+1 | int | 2 | -1
+2 | simple_type | 3 | -1
+3 | type | 5 | 4
+4 | identifier | 5 | -1
+5 | declaration_statement | 6 | -1
+6 | simple_statement | 8 | 7
+7 | ; | 8 | -1
+8 | statement | 9 | -1
+9 | statement_list | 18 | 17
+10 | int | 11 | -1
+11 | simple_type | 12 | -1
+12 | type | 14 | 13
+13 | identifier | 14 | -1
+14 | declaration_statement | 15 | -1
+15 | simple_statement | 17 | 16
+16 | ; | 17 | -1
+17 | statement | 18 | -1
+18 | statement_list | 27 | 26
+19 | int | 20 | -1
+20 | simple_type | 21 | -1
+21 | type | 23 | 22
+22 | identifier | 23 | -1
+23 | declaration_statement | 24 | -1
+24 | simple_statement | 26 | 25
+25 | ; | 26 | -1
+26 | statement | 27 | -1
+27 | statement_list | 36 | 35
+28 | int | 29 | -1
+29 | simple_type | 30 | -1
+30 | type | 32 | 31
+31 | identifier | 32 | -1
+32 | declaration_statement | 33 | -1
+33 | simple_statement | 35 | 34
+34 | ; | 35 | -1
+35 | statement | 36 | -1
+36 | statement_list | 45 | 44
+37 | read | 41 | 38
+38 | ( | 41 | 39
+39 | identifier | 41 | 40
+40 | ) | 41 | -1
+41 | read_statement | 42 | -1
+42 | simple_statement | 44 | 43
+43 | ; | 44 | -1
+44 | statement | 45 | -1
+45 | statement_list | 54 | 53
+46 | read | 50 | 47
+47 | ( | 50 | 48
+48 | identifier | 50 | 49
+49 | ) | 50 | -1
+50 | read_statement | 51 | -1
+51 | simple_statement | 53 | 52
+52 | ; | 53 | -1
+53 | statement | 54 | -1
+54 | statement_list | 63 | 62
+55 | read | 59 | 56
+56 | ( | 59 | 57
+57 | identifier | 59 | 58
+58 | ) | 59 | -1
+59 | read_statement | 60 | -1
+60 | simple_statement | 62 | 61
+61 | ; | 62 | -1
+62 | statement | 63 | -1
+63 | statement_list | 202 | 201
+64 | if | 139 | 65
+65 | ( | 139 | 80
+66 | identifier | 67 | -1
+67 | factor | 70 | 69
+68 |  | 69 | -1
+69 | int_expression_rest | 70 | -1
+70 | int_expression | 71 | -1
+71 | expression | 80 | 73
+72 | >= | 73 | -1
+73 | relation | 80 | 79
+74 | identifier | 75 | -1
+75 | factor | 78 | 77
+76 |  | 77 | -1
+77 | int_expression_rest | 78 | -1
+78 | int_expression | 79 | -1
+79 | expression | 80 | -1
+80 | condition | 139 | 81
+81 | ) | 139 | 82
+82 | { | 139 | 137
+83 | if | 116 | 84
+84 | ( | 116 | 99
+85 | identifier | 86 | -1
+86 | factor | 89 | 88
+87 |  | 88 | -1
+88 | int_expression_rest | 89 | -1
+89 | int_expression | 90 | -1
+90 | expression | 99 | 92
+91 | >= | 92 | -1
+92 | relation | 99 | 98
+93 | identifier | 94 | -1
+94 | factor | 97 | 96
+95 |  | 96 | -1
+96 | int_expression_rest | 97 | -1
+97 | int_expression | 98 | -1
+98 | expression | 99 | -1
+99 | condition | 116 | 100
+100 | ) | 116 | 101
+101 | { | 116 | 114
+102 | identifier | 110 | 103
+103 | = | 110 | 109
+104 | identifier | 105 | -1
+105 | factor | 108 | 107
+106 |  | 107 | -1
+107 | int_expression_rest | 108 | -1
+108 | int_expression | 109 | -1
+109 | expression | 110 | -1
+110 | assign_statement | 111 | -1
+111 | simple_statement | 113 | 112
+112 | ; | 113 | -1
+113 | statement | 114 | -1
+114 | statement_list | 116 | 115
+115 | } | 116 | -1
+116 | if_statement | 134 | 133
+117 | else | 133 | 118
+118 | { | 133 | 131
+119 | identifier | 127 | 120
+120 | = | 127 | 126
+121 | identifier | 122 | -1
+122 | factor | 125 | 124
+123 |  | 124 | -1
+124 | int_expression_rest | 125 | -1
+125 | int_expression | 126 | -1
+126 | expression | 127 | -1
+127 | assign_statement | 128 | -1
+128 | simple_statement | 130 | 129
+129 | ; | 130 | -1
+130 | statement | 131 | -1
+131 | statement_list | 133 | 132
+132 | } | 133 | -1
+133 | else_clause | 134 | -1
+134 | decision_statement | 135 | -1
+135 | struct_statement | 136 | -1
+136 | statement | 137 | -1
+137 | statement_list | 139 | 138
+138 | } | 139 | -1
+139 | if_statement | 199 | 198
+140 | else | 198 | 141
+141 | { | 198 | 196
+142 | if | 175 | 143
+143 | ( | 175 | 158
+144 | identifier | 145 | -1
+145 | factor | 148 | 147
+146 |  | 147 | -1
+147 | int_expression_rest | 148 | -1
+148 | int_expression | 149 | -1
+149 | expression | 158 | 151
+150 | >= | 151 | -1
+151 | relation | 158 | 157
+152 | identifier | 153 | -1
+153 | factor | 156 | 155
+154 |  | 155 | -1
+155 | int_expression_rest | 156 | -1
+156 | int_expression | 157 | -1
+157 | expression | 158 | -1
+158 | condition | 175 | 159
+159 | ) | 175 | 160
+160 | { | 175 | 173
+161 | identifier | 169 | 162
+162 | = | 169 | 168
+163 | identifier | 164 | -1
+164 | factor | 167 | 166
+165 |  | 166 | -1
+166 | int_expression_rest | 167 | -1
+167 | int_expression | 168 | -1
+168 | expression | 169 | -1
+169 | assign_statement | 170 | -1
+170 | simple_statement | 172 | 171
+171 | ; | 172 | -1
+172 | statement | 173 | -1
+173 | statement_list | 175 | 174
+174 | } | 175 | -1
+175 | if_statement | 193 | 192
+176 | else | 192 | 177
+177 | { | 192 | 190
+178 | identifier | 186 | 179
+179 | = | 186 | 185
+180 | identifier | 181 | -1
+181 | factor | 184 | 183
+182 |  | 183 | -1
+183 | int_expression_rest | 184 | -1
+184 | int_expression | 185 | -1
+185 | expression | 186 | -1
+186 | assign_statement | 187 | -1
+187 | simple_statement | 189 | 188
+188 | ; | 189 | -1
+189 | statement | 190 | -1
+190 | statement_list | 192 | 191
+191 | } | 192 | -1
+192 | else_clause | 193 | -1
+193 | decision_statement | 194 | -1
+194 | struct_statement | 195 | -1
+195 | statement | 196 | -1
+196 | statement_list | 198 | 197
+197 | } | 198 | -1
+198 | else_clause | 199 | -1
+199 | decision_statement | 200 | -1
+200 | struct_statement | 201 | -1
+201 | statement | 202 | -1
+202 | statement_list | 212 | 211
+203 | print | 208 | 204
+204 | ( | 208 | 206
+205 | identifier | 206 | -1
+206 | print_type | 208 | 207
+207 | ) | 208 | -1
+208 | print_statement | 209 | -1
+209 | simple_statement | 211 | 210
+210 | ; | 211 | -1
+211 | statement | 212 | -1
+212 | statement_list | 214 | 213
+213 | } | 214 | -1
+214 | program | -1 | -1

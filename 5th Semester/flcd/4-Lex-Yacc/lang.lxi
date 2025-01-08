@@ -1,0 +1,64 @@
+%{
+#include "y.tab.h"
+#include <string.h> 
+%}
+
+%%
+
+"if"                        { return IF; }
+"else"                      { return ELSE; }
+"while"                     { return WHILE; }
+"read"                      { return READ; }
+"write"                     { return WRITE; }
+"int"                       { return INT; }
+"float"                     { return FLOAT; }
+"string"                    { return STRING; }
+"char"                      { return CHAR; }
+"array"                     { return ARRAY; }
+"of"                        { return OF; }
+
+"("                         { return LPAREN; }
+")"                         { return RPAREN; }
+"{"                         { return LBRACE; }
+"}"                         { return RBRACE; }
+"["                         { return LBRACKET; }
+"]"                         { return RBRACKET; }
+";"                         { return SEMICOLON; }
+","                         { return COMMA; }
+"="                         { return ASSIGN; }
+
+"+"                         { return PLUS; }
+"-"                         { return MINUS; }
+"*"                         { return MULTIPLY; }
+"/"                         { return DIVIDE; }
+"%"                         { return MODULO; }
+"=="                        { return EQUALS; }
+"!="                        { return NOTEQUAL; }
+"<"                         { return LT; }
+">"                         { return GT; }
+"<="                        { return LTE; }
+">="                        { return GTE; }
+"&&"                        { return AND; }
+"||"                        { return OR; }
+
+[a-zA-Z_][a-zA-Z0-9_]*  { yylval.str_val = strdup(yytext); return IDENTIFIER; }
+[0-9]+                  { yylval.int_val = atoi(yytext); return INTEGER_CONSTANT; }
+[0-9]+\.[0-9]+          { yylval.float_val = atof(yytext); return FLOAT_CONSTANT; }
+
+
+\"([^"\\]|\\.)*\" {
+    yytext[strlen(yytext) - 1] = '\0';  
+    yylval.str_val = strdup(yytext + 1);
+    return STRING_CONSTANT;
+}
+
+[ \t\n]+                     ;
+"//".*                       ;
+
+.                            { printf("Unrecognized token: %s\n", yytext); }
+
+%%
+
+int yywrap() {
+    return 1;
+}
