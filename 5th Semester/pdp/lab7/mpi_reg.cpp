@@ -84,7 +84,7 @@ int main(int argc, char **argv)
 
     if (rank == 0)
     {
-        ofstream fout("mpi_reg_par_output.txt");
+        ofstream fout("mpi_reg_output.txt");
 
         for (int i = 0; i < c.size(); ++i)
             fout << c[i] << " ";

@@ -23,9 +23,11 @@ for i in $(seq 0 $2); do      # Loop through m+1 coefficients
 done
 
 # Compile and run the C++ program
-mpic++ -o mpi_reg_par mpi_reg_par.cpp
+mpic++ -o mpi_reg mpi_reg.cpp 2> /dev/null
+mpic++ -o mpi_kar mpi_kar.cpp 2> /dev/null
 g++ -std=c++11 reg_par.cpp -o reg_par
-mpirun -np 8 ./mpi_reg_par polynomials.txt
+mpirun -np 8 ./mpi_reg polynomials.txt
+mpirun -np 8 ./mpi_kar polynomials.txt
 ./reg_par polynomials.txt
 
-diff mpi_reg_par_output.txt reg_par_output.txt
+diff mpi_reg_output.txt reg_par_output.txt

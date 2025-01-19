@@ -7,5 +7,5 @@ echo "Running 1000 3000 polynomials"
 ./run.sh 1000 3000
 echo "Running 10000 10000 polynomials"
 ./run.sh 10000 10000
-echo "Running 100032 149324 polynomials"
-./run.sh 100032 149324
+# echo "Running 100032 149324 polynomials"
+# ./run.sh 100032 149324
