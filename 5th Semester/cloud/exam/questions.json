@@ -1,0 +1,770 @@
+[
+  {
+    "question": "What are Docker volumes good for?",
+    "answers": [
+      {
+        "statement": "a way to persist data separate of the container's lifecycle",
+        "correct": true
+      },
+      {
+        "statement": "allow us to control network isolation separately",
+        "correct": false
+      },
+      {
+        "statement": "enable communication between multiple containers",
+        "correct": false
+      },
+      {
+        "statement": "needed since containers are ephemeral and isolated",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Which service models does Amazon Web Services provide?",
+    "answers": [
+      {
+        "statement": "Saas",
+        "correct": true
+      },
+      {
+        "statement": "Paas",
+        "correct": true
+      },
+      {
+        "statement": "Iaas",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Simple Storage Service (S3) helps us",
+    "answers": [
+      {
+        "statement": "Create bootable virtual disks that can be attached to EC2 instances",
+        "correct": false
+      },
+      {
+        "statement": "Store and serve an infinite amount of objects such as images, documents, and videos",
+        "correct": true
+      },
+      {
+        "statement": "Host web applications",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "What is CloudFormation?",
+    "answers": [
+      {
+        "statement": "IaC Service",
+        "correct": true
+      },
+      {
+        "statement": "PaaS Service",
+        "correct": false
+      },
+      {
+        "statement": "IaaS Service",
+        "correct": false
+      },
+      {
+        "statement": "None of the above",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Why are there multiple availability zones in one region?",
+    "answers": [
+      {
+        "statement": "Because one AZ would not support all IP addresses for a VPC",
+        "correct": false
+      },
+      {
+        "statement": "To enable highly available architectures and redundant storage",
+        "correct": true
+      },
+      {
+        "statement": "Because cross-region replication is not supported since AWS regions are independent cloud deployments",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "AWS EC2 is a service designed for",
+    "answers": [
+      {
+        "statement": "Creating highly available managed databases",
+        "correct": false
+      },
+      {
+        "statement": "Creating virtual machines that can act as servers",
+        "correct": true
+      },
+      {
+        "statement": "Running applications without having to maintain the OS and packages",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "An EC2 instance can be configured as follow",
+    "answers": [
+      {
+        "statement": "There is no need to configure anything. The instance will scale based on the workload",
+        "correct": false
+      },
+      {
+        "statement": "Based on an instance type which offers certain resources (vCPU, RAM, networking, etc.)",
+        "correct": true
+      },
+      {
+        "statement": "Each resource (vCPU, RAM, etc.) must always be specified independently based on the estimated workload",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "RDS is a",
+    "answers": [
+      {
+        "statement": "managed relational database service",
+        "correct": true
+      },
+      {
+        "statement": "managed container service",
+        "correct": false
+      },
+      {
+        "statement": "serverless database",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "The connection times out while trying to access an EC2 instance via SSH on the standard port. What is the most likely issue?",
+    "answers": [
+      {
+        "statement": "The instance is not reachable via the internet",
+        "correct": false
+      },
+      {
+        "statement": "The security group does not explicitly allow traffic on port 22",
+        "correct": true
+      },
+      {
+        "statement": "The instance type is misconfigured",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "You are designing a three-tier web application and want to restrict access to the database tier (remember PostgreSQL instance) to accept traffic from the application servers only (Spring Java app). However, these application servers are in an Auto Scaling group and may vary in quantity. How should you configure the database servers to meet the requirements?",
+    "answers": [
+      {
+        "statement": "Configure the database subnet network ACL to allow inbound database traffic from the application-tier subnet.",
+        "correct": false
+      },
+      {
+        "statement": "Configure the database security group to allow database traffic from the application server IP addresses.",
+        "correct": false
+      },
+      {
+        "statement": "Configure the database subnet network ACL to deny all inbound non-database traffic from the application-tier subnet.",
+        "correct": false
+      },
+      {
+        "statement": "Configure the database security group to allow database traffic from the application server security group.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Content stored on S3 can be restricted such that it is accessible only through CloudFront by using",
+    "answers": [
+      {
+        "statement": "Origin Access Identity",
+        "correct": true
+      },
+      {
+        "statement": "Signed URLs",
+        "correct": false
+      },
+      {
+        "statement": "S3 Bucket Settings",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "An AWS region is",
+    "answers": [
+      {
+        "statement": "An organizational unit designed to serve clients from a specific area",
+        "correct": false
+      },
+      {
+        "statement": "An independent and isolated cloud deployed in a specific geographical region",
+        "correct": true
+      },
+      {
+        "statement": "An AWS data center",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Documents are stored in S3 in a",
+    "answers": [
+      {
+        "statement": "Server",
+        "correct": false
+      },
+      {
+        "statement": "Bucket",
+        "correct": true
+      },
+      {
+        "statement": "Storage account",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Docker is a",
+    "answers": [
+      {
+        "statement": "Framework",
+        "correct": false
+      },
+      {
+        "statement": "Programming language",
+        "correct": false
+      },
+      {
+        "statement": "Container engine",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Simple Storage Service works through",
+    "answers": [
+      {
+        "statement": "HTTP",
+        "correct": true
+      },
+      {
+        "statement": "SMTP",
+        "correct": false
+      },
+      {
+        "statement": "FTP",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "An EC2 instance can be configured as follows",
+    "answers": [
+      {
+        "statement": "Based on an instance type which offers certain resources (vCPU, RAM, networking. etc.)",
+        "correct": true
+      },
+      {
+        "statement": "Each resource must always be specified independently based on the estimated workload",
+        "correct": false
+      },
+      {
+        "statement": "There is no need to configure anything. The instance will scale based on the workload",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "If you need just one EC2 instance, would an auto-scaling group (ASG) provide any benefit?",
+    "answers": [
+      {
+        "statement": "No, it would just incur unnecessary costs",
+        "correct": false
+      },
+      {
+        "statement": "Yes, it will scale the resources (CPU & RAM) of the instance as needed",
+        "correct": false
+      },
+      {
+        "statement": "You cannot run an EC2 instance without an ASG",
+        "correct": false
+      },
+      {
+        "statement": "Yes, the ASG will ensure there is always one instance running",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "An AWS availability zone is:",
+    "answers": [
+      {
+        "statement": "A feature of EC2 that increases the availability",
+        "correct": false
+      },
+      {
+        "statement": "An isolated location, part of a specific region, in which resources can be deployed",
+        "correct": true
+      },
+      {
+        "statement": "A geographical area in which AWS services are available",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "What is the difference between a Docker image and a Docker container?",
+    "answers": [
+      {
+        "statement": "Containers are running instances of images",
+        "correct": true
+      },
+      {
+        "statement": "There is no such thing as a Docker image",
+        "correct": false
+      },
+      {
+        "statement": "An image groups multiple containers that can communicate between them",
+        "correct": false
+      },
+      {
+        "statement": "They are the same",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "An EC2 instance is deployed in a specific AZ",
+    "answers": [
+      {
+        "statement": "True",
+        "correct": true
+      },
+      {
+        "statement": "False",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "What is the purpose of the Dockerfile for Docker?",
+    "answers": [
+      {
+        "statement": "It contains all the commands and steps for assembling a Docker image",
+        "correct": true
+      },
+      {
+        "statement": "It contains the input data for a program that runs within a container",
+        "correct": false
+      },
+      {
+        "statement": "Docker doesn't use Dockerfile",
+        "correct": false
+      },
+      {
+        "statement": "It contains the output after running a container",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Docker is a",
+    "answers": [
+      {
+        "statement": "virtualization program",
+        "correct": false
+      },
+      {
+        "statement": "container engine",
+        "correct": true
+      },
+      {
+        "statement": "framework",
+        "correct": false
+      },
+      {
+        "statement": "programming language",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "The most cost-effective and scalable way to host a static web application on AWS is",
+    "answers": [
+      {
+        "statement": "Simple Storage Service (S3)",
+        "correct": true
+      },
+      {
+        "statement": "Elastic Compute Cloud (EC2)",
+        "correct": false
+      },
+      {
+        "statement": "Elastic Container Service (ECS)",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "You can choose the AZ in which an EC2 will run by",
+    "answers": [
+      {
+        "statement": "EC2 instances are AZ-agnostic",
+        "correct": false
+      },
+      {
+        "statement": "Choosing the AZ during the instance configuration",
+        "correct": false
+      },
+      {
+        "statement": "Selecting a subnet for that specific AZ",
+        "correct": true
+      },
+      {
+        "statement": "You can choose the AZ only when using ASGs",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "From where does Docker pull the image hello-world when running docker run hello-world",
+    "answers": [
+      {
+        "statement": "From the registry specified in the Dockerfile from the current directory",
+        "correct": false
+      },
+      {
+        "statement": "Docker tries to pull it from AWS ECR",
+        "correct": false
+      },
+      {
+        "statement": "Always pulls it from the Docker Hub",
+        "correct": false
+      },
+      {
+        "statement": "Docker tries to find it locally. If it doesn't find it, Docker checks the Docker Hub",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Your application tier is running in an Auto Scaling Group and you need to change the instance type. In which of the following area can this be achieved?",
+    "answers": [
+      {
+        "statement": "Auto scaling AMI",
+        "correct": false
+      },
+      {
+        "statement": "Auto scaling launch template/configuration",
+        "correct": true
+      },
+      {
+        "statement": "Auto scaling policy configuration",
+        "correct": false
+      },
+      {
+        "statement": "Auto scaling tags configuration",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "How does ECS ensure the cluster has enough computing capacity when running on EC2?",
+    "answers": [
+      {
+        "statement": "It leverages an ASG",
+        "correct": true
+      },
+      {
+        "statement": "It has its own instance orchestrator",
+        "correct": false
+      },
+      {
+        "statement": "You have to manually scale the cluster",
+        "correct": false
+      },
+      {
+        "statement": "ECS only works with Fargate, not with EC2",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "RDS can",
+    "answers": [
+      {
+        "statement": "upgrade the RDBMS automatically",
+        "correct": true
+      },
+      {
+        "statement": "encrypt the data",
+        "correct": true
+      },
+      {
+        "statement": "backup the database automatically",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Your solution requires a load balancing solution that preserved the source IP address. Which solution should you choose?",
+    "answers": [
+      {
+        "statement": "Setup a custom load balance using NGINX or HAProxy",
+        "correct": false
+      },
+      {
+        "statement": "Gateway Load Balancer",
+        "correct": false
+      },
+      {
+        "statement": "Application Load Balancer",
+        "correct": false
+      },
+      {
+        "statement": "Network Load Balancern",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Which is the best criterion for splitting infrastructure into multiple CloudFormation stacks?",
+    "answers": [
+      {
+        "statement": "based on region",
+        "correct": false
+      },
+      {
+        "statement": "you should strive to keep all resources under one stack",
+        "correct": false
+      },
+      {
+        "statement": "layers: compute, storage, networking",
+        "correct": false
+      },
+      {
+        "statement": "the lifecycl/rate of change of the resource",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "",
+    "answers": [
+      {
+        "statement": "ECS will run all images from teh configured ECR repository",
+        "correct": false
+      },
+      {
+        "statement": "Based on the configured task definition",
+        "correct": false
+      },
+      {
+        "statement": "Based on the provided Dockerfile",
+        "correct": true
+      },
+      {
+        "statement": "Based on the images you mention during the cluster creation",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "An EC2 instance runs in a specific _ based on _ IP addresses are assigned to the instance",
+    "answers": [
+      {
+        "statement": "VPC Subnet, both public and private",
+        "correct": true
+      },
+      {
+        "statement": "VPC Subnet, only public",
+        "correct": false
+      },
+      {
+        "statement": "Security Group, only public",
+        "correct": false
+      },
+      {
+        "statement": "Security Group, both public and private",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Software can be automatically installed during the provisioning of the EC2 instance through _ which is composed of ",
+    "answers": [
+      {
+        "statement": "User Data, A CloudFormation script",
+        "correct": false
+      },
+      {
+        "statement": "User Data, A Bash script",
+        "correct": true
+      },
+      {
+        "statement": "User Data, A Dockerfile",
+        "correct": false
+      },
+      {
+        "statement": "User Data, A Terraform script",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "The AWS service for load balancing supports the following types of load balancers: Application load balancer which operates at the _ layer, Network load balancer which operates at the _ layer, and Gateway load balancer which operates at the _ layer",
+    "answers": [
+      {
+        "statement": "TCP/UDP, HTTP/Websockets, Network",
+        "correct": false
+      },
+      {
+        "statement": "HTTP/Websockets, TCP/UDP, Network",
+        "correct": true
+      },
+      {
+        "statement": "HTTP/Websockets, Network, TCP/UDP",
+        "correct": false
+      },
+      {
+        "statement": "TCP/UDP, Network, HTTP/Websockets",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "VPC allows you to control the traffic between _ and _",
+    "answers": [
+      {
+        "statement": "Subnets, Security Groups",
+        "correct": false
+      },
+      {
+        "statement": "Subnets, private IP addresses",
+        "correct": true
+      },
+      {
+        "statement": "Security Groups, private IP addresses",
+        "correct": false
+      },
+      {
+        "statement": "Security Groups, Subnets",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Security groups act at the _ level, not the _ level",
+    "answers": [
+      {
+        "statement": "Instance, VPC",
+        "correct": false
+      },
+      {
+        "statement": "Instance, subnet",
+        "correct": true
+      },
+      {
+        "statement": "VPC, subnet",
+        "correct": false
+      },
+      {
+        "statement": "VPC, instance",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Every instance in a subnet in a VPC can have assigned a different set of _",
+    "answers": [
+      {
+        "statement": "Security Groups",
+        "correct": true
+      },
+      {
+        "statement": "Subnets",
+        "correct": false
+      },
+      {
+        "statement": "VPCs",
+        "correct": false
+      },
+      {
+        "statement": "Availability Zones",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "CloudFront is a(n) _ and is composed of _",
+    "answers": [
+      {
+        "statement": "CDN, a network of edge locations",
+        "correct": true
+      },
+      {
+        "statement": "CDN, a network of data centers",
+        "correct": false
+      },
+      {
+        "statement": "CDN, a network of regions",
+        "correct": false
+      },
+      {
+        "statement": "CDN, a network of availability zones",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "An EC2 instance can be secured by _ which _",
+    "answers": [
+      {
+        "statement": "security groups, control the inbound and outbound traffic",
+        "correct": true
+      },
+      {
+        "statement": "security groups, control the inbound traffic",
+        "correct": false
+      },
+      {
+        "statement": "network ACLs, control the inbound and outbound traffic",
+        "correct": false
+      },
+      {
+        "statement": "network ACLs, control the inbound traffic",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Object stored in S3 can be made public by configuring the _ _",
+    "answers": [
+      {
+        "statement": "bucket policy, at any time",
+        "correct": true
+      },
+      {
+        "statement": "external source, only at creation",
+        "correct": false
+      },
+      {
+        "statement": "cloud user, only after the object is uploaded",
+        "correct": false
+      },
+      {
+        "statement": "bucket policy, only after the object is downloaded",
+        "correct": false
+      }
+    ]
+  }
+]

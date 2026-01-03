@@ -26,7 +26,6 @@ done
 # g++ -std=c++11 karatsuba_sequential.cpp -o karatsuba_sequential
 g++ -std=c++20 fft_parallelized.cpp -o fft_parallelized
 g++ -std=c++20 fft_iterative_seq.cpp -o fft_it_seq
-g++ -std=c++20 fft_iterative_par.cpp -o fft_it_par
 mpic++ -std=c++20 -o fft_mpi fft_mpi.cpp 2> /dev/null
 g++ -std=c++20 fft_sequential.cpp -o fft_sequential
 g++ -std=c++20 regular_parallelized.cpp -o regular_parallel
@@ -36,7 +35,6 @@ mpirun -np 8 ./fft_mpi polynomials.txt
 ./fft_sequential polynomials.txt
 ./fft_it_seq polynomials.txt
 ./regular_parallel polynomials.txt
-./fft_it_par polynomials.txt
 # ./regular_parallel polynomials.txt
 # ./regular_sequential polynomials.txt
 

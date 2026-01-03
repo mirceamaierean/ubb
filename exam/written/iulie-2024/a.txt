@@ -1,0 +1,29 @@
+1.
+a) linia 10 executa din nou instructiunea ./a.out, ruland din nou programul
+din acest fisier, iar parametrul este luat din sirul s, NULL reprezentand
+faptul ca nu se mai dau alti parametri
+b) 3 procese - procesul parinte face un prim proces copil, apoi inca unul,
+apoi inca unul
+    P
+      / | \
+     P1 P2 P3
+c) nimic, deoarece procesul parinte executa execlp, sarind peste printf,
+iar a doua oara (dupa execlp) n va fi 0 deci nu va mai intra deloc in if
+d)
+3
+2
+1
+conform diagramei de la b), primul proces copil (P1) va afisa 3, apoi al doilea proces copil 2 si al treilea 1
+e) 
+1
+2
+3
+procesele copil vor face execlp, iar parintele printf, deci:
+P
+|
+P1
+|
+P2
+|
+P3
+,unde P3 afiseaza 1, P2 afiseaza 2 si P1 afiseaza 1

@@ -39,3 +39,17 @@
 - [flcd](https://github.com/mirceamaierean/ubb/tree/main/5th%20Semester/flcd)
 - [mobile](https://github.com/mirceamaierean/ubb/tree/main/5th%20Semester/mobile)
 - [crypto](https://github.com/mirceamaierean/ubb/tree/main/5th%20Semester/crypto)
+- [cloud](https://github.com/mirceamaierean/ubb/tree/main/5th%20Semester/cloud)
+
+## [Semester 6️⃣](https://github.com/mirceamaierean/ubb/tree/main/6th%20Semester)
+
+- [etica](https://github.com/mirceamaierean/ubb/tree/main/6th%20Semester/etica)
+- [design patterns](https://github.com/mirceamaierean/ubb/tree/main/6th%20Semester/design%20patterns)
+- [udllm](https://github.com/mirceamaierean/ubb/tree/main/6th%20Semester/udllm)
+- [ssvv](https://github.com/mirceamaierean/ubb/tree/main/6th%20Semester/ssvv)
+- [numerical calculus](https://github.com/mirceamaierean/ubb/tree/main/6th%20Semester/numerical%20calculus)
+
+## [Exam](https://github.com/mirceamaierean/ubb/tree/main/exam)
+
+- [written](https://github.com/mirceamaierean/ubb/tree/main/exam/written)
+- [thesis](https://github.com/mirceamaierean/ubb/tree/main/exam/thesis)

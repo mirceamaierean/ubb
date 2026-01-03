@@ -38,7 +38,7 @@ Example: ls -s file
 RO: Scrieţi o condiţie Shell UNIX care verifică dacă un un fişier există şi utilizatorul curent are vreo permisiune asupra lui.
 EN: Write a UNIX Shell condition that checks whether a file exists and the current user has any permissions on it.
 Answer:
-if $(ls -l $file | awk {'print $1'} | grep -E -q -v "^....---...$"); then
+if $(ls -l $file | awk {'print $1'} | grep -E -q -v "^-....---...@$"); then
     echo "File exists and user has acces to it"
 else 
     echo "Condition not met"
