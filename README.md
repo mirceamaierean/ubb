@@ -29,7 +29,7 @@
 
 - [ai](https://github.com/mirceamaierean/ubb/tree/main/4th%20Semester/AI)
 - [web](https://github.com/mirceamaierean/ubb/tree/main/4th%20Semester/web)
-- [dbms](https://github.com/mirceamaierean/ubb/tree/main/4th%20Semester/web)
+- [dbms](https://github.com/mirceamaierean/ubb/tree/main/4th%20Semester/dbms)
 - [mpp](https://github.com/mirceamaierean/ubb/tree/main/4th%20Semester/mpp)
 - [iss](https://github.com/mirceamaierean/ubb/tree/main/4th%20Semester/iss)
 
